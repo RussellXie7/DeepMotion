@@ -33,7 +33,7 @@ SAMPLE_COUNT_INDICATOR_INDEX = 0  # index for sample counter
 
 
 def read_raw_input(read_file_name):
-    with open(read_file_name, 'rb') as f:
+    with open(read_file_name, 'r') as f:
         reader = csv.reader(f)
         raw_data_list = list(reader)
     return raw_data_list
@@ -84,7 +84,7 @@ def ypr_interpolate(sample_timestamp, sample_ypr, interpol_time_axis):
 def render_output(raw_data_list, output_file_name):
     writer = csv.writer(open(output_file_name, 'wb'))
     max_list_index = int(raw_data_list[-1][0])
-    print '{}{}'.format('Reading file with sample count: ', max_list_index)
+    print('{}{}'.format('Reading file with sample count: ', max_list_index))
 
     # use 1 as starting index due to sample index start with 1
     for sample_index in range(1, max_list_index + 1):
@@ -102,17 +102,17 @@ def render_output(raw_data_list, output_file_name):
 
 
 def main():
-    print 'reading raw input on letter a'
+    print('reading raw input on letter a')
     raw_list_a = read_raw_input(RAW_FILE_NAME_A)
-    print 'reading raw input on letter b'
+    print('reading raw input on letter b')
     raw_list_b = read_raw_input(RAW_FILE_NAME_B)
-    print 'reading raw input on letter c'
+    print('reading raw input on letter c')
     raw_list_c = read_raw_input(RAW_FILE_NAME_C)
-    print 'saving rendered output on letter a'
+    print('saving rendered output on letter a')
     render_output(raw_list_a, SAVE_FILE_NAME_A)
-    print 'saving rendered output on letter b'
+    print('saving rendered output on letter b')
     render_output(raw_list_b, SAVE_FILE_NAME_B)
-    print 'saving rendered output on letter c'
+    print('saving rendered output on letter c')
     render_output(raw_list_c, SAVE_FILE_NAME_C)
 
 
