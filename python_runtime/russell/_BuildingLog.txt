@@ -1,0 +1,26 @@
+********************************************
+*                                          *
+*                  emmmmm....              *
+*                                          *
+*                                          *
+********************************************
+
+Dec.8
+
+1. input_data.py, tailmotion.py 和五个data file需要放在同一directory
+2. 在做training 的script里面，比如说CNN_Testing.py，可以直接用：
+	
+	# load datafiles
+	import input_data
+	fullsets = input_data.read_data_sets()
+	
+	# access training data
+	fullsets.train.motionData.shape
+	fullsets.train.labels.shape
+	
+	# access testing data
+	fullsets.test.motionData.shape
+	fullsets.test.labels.shape
+
+3. 目前的train:test比例应该是4：1 , test占比0.2       
+	
