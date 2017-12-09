@@ -82,7 +82,7 @@ def ypr_interpolate(sample_timestamp, sample_ypr, interpol_time_axis):
 
 
 def render_output(raw_data_list, output_file_name):
-    writer = csv.writer(open(output_file_name, 'wb'))
+    writer = csv.writer(open(output_file_name, 'w'))
     max_list_index = int(raw_data_list[-1][0])
     print('{}{}'.format('Reading file with sample count: ', max_list_index))
 
