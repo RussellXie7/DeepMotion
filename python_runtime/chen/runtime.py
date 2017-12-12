@@ -8,6 +8,8 @@ import logging
 import csv
 import datetime
 import time
+import random
+import sys
 
 
 # constant for logger
@@ -24,7 +26,7 @@ TEST_SIZE = 0.25
 
 # constant for rnn training
 learning_rate = 0.001
-training_steps = 1000
+training_steps = 1000 # TODO: change the steps to 10000 for better result
 batch_size = 128
 display_step = 50
 
@@ -32,7 +34,7 @@ display_step = 50
 num_input = 3  # we only read one set of yaw pitch row
 timesteps = 100  # timesteps - we have 100 data point for each char
 num_hidden = 128  # hidden layer num of features
-num_classes = 3  # number of data class - using abc for now
+num_classes = 5  # number of data class - using abc for now
 
 # raw data file names
 DATA_SET_A = 'run_letter_a_format.csv'
@@ -45,7 +47,7 @@ DATA_SET_E = 'run_letter_e_format.csv'
 X = tf.placeholder("float", [None, timesteps, num_input])
 Y = tf.placeholder("float", [None, num_classes])
 
-# Define weights
+# define weights
 weights = {
     'out': tf.Variable(tf.random_normal([num_hidden, num_classes]))
 }
@@ -81,6 +83,24 @@ def render_raw_data():
         train_test_split(raw_x, raw_y, test_size=TEST_SIZE, random_state=SPLIT_RANDOM_STATE)
 
     return train_x, train_y, test_x, test_y
+
+
+# TODO: make render_batch generate next set of unique batch instead of repeat some same index
+def render_batch(batch_size, x_data, y_data):
+    if len(x_data) != len(y_data):
+        sys.exit("Error: cannot render batch with different len of x and y.")
+
+    batch_index = random.sample(range(0, len(x_data)), batch_size)
+    render_x = []
+    render_y = []
+
+    for index in batch_index:
+        render_x.append(x_data[index])
+        render_y.append(y_data[index])
+
+    render_x = np.array(render_x).astype(None)
+    render_y = np.array(render_y).astype(None)
+    return render_x, render_y
 
 
 def RNN(x, weights, biases):
@@ -125,7 +145,7 @@ def training_engine(train_x, train_y, test_x, test_y):
         sess.run(init)
 
         for step in range(1, training_steps + 1):
-            batch_x, batch_y = mnist.train.next_batch(batch_size)
+            batch_x, batch_y = render_batch(batch_size, train_x, train_y)
             # Reshape data to get 28 seq of 28 elements
             batch_x = batch_x.reshape((batch_size, timesteps, num_input))
             # Run optimization op (backprop)
@@ -141,9 +161,9 @@ def training_engine(train_x, train_y, test_x, test_y):
         print("Optimization Finished!")
 
         # Calculate accuracy for 128 mnist test images
-        test_len = 128
-        test_data = mnist.test.images[:test_len].reshape((-1, timesteps, num_input))
-        test_label = mnist.test.labels[:test_len]
+        test_len = 100
+        test_data = train_x[:test_len].reshape((-1, timesteps, num_input))
+        test_label = train_y[:test_len]
         print("Testing Accuracy:", \
               sess.run(accuracy, feed_dict={X: test_data, Y: test_label}))
 
@@ -162,7 +182,7 @@ def main():
     train_x, train_y, test_x, test_y = render_raw_data()
     logger.debug("End reading formatted input")
 
-    # training_engine(train_x, train_y, test_x, test_y)
+    training_engine(train_x, train_y, test_x, test_y)
 
 
 if __name__ == '__main__':
