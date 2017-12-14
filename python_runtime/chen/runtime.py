@@ -17,12 +17,11 @@ CURRENT_TIMESTAMP = datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m
 RESULT_OUTPUT = 'run_svm_result_' + CURRENT_TIMESTAMP + '.log'
 LOGGER_FORMAT_HEADER = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 CUTOFF_LINE = '--------------------------------------------------------------------------------------------------'
-
+IS_ENABLE_FILE_LOGGING = False
 
 # general constant
 SPLIT_RANDOM_STATE = 42
 TEST_SIZE = 0.25
-
 
 # constant for rnn training
 learning_rate = 0.001
@@ -54,6 +53,25 @@ weights = {
 biases = {
     'out': tf.Variable(tf.random_normal([num_classes]))
 }
+
+# bookkeeping logic for setup logger and random sample generator
+LOGGER = logging.getLogger('cogs181_runtime')
+LOGGER.setLevel(logging.DEBUG)
+formatter = logging.Formatter(LOGGER_FORMAT_HEADER)
+
+# setup file logging if user enable
+if IS_ENABLE_FILE_LOGGING:
+    fh = logging.FileHandler(RESULT_OUTPUT)
+    fh.setLevel(logging.INFO)
+    fh.setFormatter(formatter)
+    LOGGER.addHandler(fh)
+
+ch = logging.StreamHandler()
+ch.setLevel(logging.DEBUG)
+ch.setFormatter(formatter)
+LOGGER.addHandler(ch)
+
+random.seed(SPLIT_RANDOM_STATE)
 
 
 def read_format_input(read_file_name):
@@ -146,41 +164,31 @@ def training_engine(train_x, train_y, test_x, test_y):
 
         for step in range(1, training_steps + 1):
             batch_x, batch_y = render_batch(batch_size, train_x, train_y)
-            # Reshape data to get 28 seq of 28 elements
+            # Reshape data to get 100 seq of 3 elements (y,p,r)
             batch_x = batch_x.reshape((batch_size, timesteps, num_input))
-            # Run optimization op (backprop)
+            # run optimization operation by using backprop
             sess.run(train_op, feed_dict={X: batch_x, Y: batch_y})
             if step % display_step == 0 or step == 1:
-                # Calculate batch loss and accuracy
-                loss, acc = sess.run([loss_op, accuracy], feed_dict={X: batch_x,
-                                                                     Y: batch_y})
-                print("Step " + str(step) + ", Minibatch Loss= " + \
-                      "{:.4f}".format(loss) + ", Training Accuracy= " + \
-                      "{:.3f}".format(acc))
 
-        print("Optimization Finished!")
+                # calculate batch loss and accuracy
+                loss, acc = sess.run([loss_op, accuracy], feed_dict={X: batch_x, Y: batch_y})
+                training_step_log = ("Step " + str(step) + ", Minibatch Loss= " + "{:.4f}".format(loss) + ", Training Accuracy= " + "{:.3f}".format(acc))
+                LOGGER.debug(training_step_log)
 
-        # Calculate accuracy for 128 mnist test images
-        test_len = 100
-        test_data = test_x[:test_len].reshape((-1, timesteps, num_input))
-        test_label = test_y[:test_len]
-        print("Testing Accuracy:", \
-              sess.run(accuracy, feed_dict={X: test_data, Y: test_label}))
+        LOGGER.debug("Optimization Finished!")
+
+        # calculate accuracy on testing set
+        test_data = test_x.reshape((-1, timesteps, num_input))
+        test_label = test_y
+        test_acc = sess.run(accuracy, feed_dict={X: test_data, Y: test_label})
+        test_log = "Testing Accuracy:" + str(test_acc)
+        LOGGER.debug(test_log)
 
 
 def main():
-    logger = logging.getLogger('cogs181_runtime')
-    logger.setLevel(logging.DEBUG)
-    # fh = logging.FileHandler(RESULT_OUTPUT)
-    # fh.setLevel(logging.INFO)
-    ch = logging.StreamHandler()
-    ch.setLevel(logging.DEBUG)
-    formatter = logging.Formatter(LOGGER_FORMAT_HEADER)
-    # fh.setFormatter(formatter)
-    ch.setFormatter(formatter)
-    logger.debug("Start reading formatted input")
+    LOGGER.debug("Start reading formatted input")
     train_x, train_y, test_x, test_y = render_raw_data()
-    logger.debug("End reading formatted input")
+    LOGGER.debug("End reading formatted input")
 
     training_engine(train_x, train_y, test_x, test_y)
 
