@@ -126,16 +126,16 @@ def RNN(x, weights, biases):
     # Current data input shape: (batch_size, timesteps, n_input)
     # Required shape: 'timesteps' tensors list of shape (batch_size, n_input)
 
-    # Unstack to get a list of 'timesteps' tensors of shape (batch_size, n_input)
+    # unstack to get a list of 'timesteps' tensors of shape (batch_size, n_input)
     x = tf.unstack(x, timesteps, 1)
 
-    # Define a lstm cell with tensorflow
+    # define a lstm cell with tensorflow
     lstm_cell = rnn.BasicLSTMCell(num_hidden, forget_bias=1.0)
 
-    # Get lstm cell output
+    # get lstm cell output
     outputs, states = rnn.static_rnn(lstm_cell, x, dtype=tf.float32)
 
-    # Linear activation, using rnn inner loop last output
+    # linear activation, using rnn inner loop last output
     return tf.matmul(outputs[-1], weights['out']) + biases['out']
 
 
@@ -143,28 +143,28 @@ def training_engine(train_x, train_y, test_x, test_y):
     logits = RNN(X, weights, biases)
     prediction = tf.nn.softmax(logits)
 
-    # Define loss and optimizer
+    # define loss and optimizer
     loss_op = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(
         logits=logits, labels=Y))
     optimizer = tf.train.GradientDescentOptimizer(learning_rate=learning_rate)
     train_op = optimizer.minimize(loss_op)
 
-    # Evaluate model (with test logits, for dropout to be disabled)
+    # evaluate model (with test logits, for dropout to be disabled)
     correct_pred = tf.equal(tf.argmax(prediction, 1), tf.argmax(Y, 1))
     accuracy = tf.reduce_mean(tf.cast(correct_pred, tf.float32))
 
-    # Initialize the variables (i.e. assign their default value)
+    # assign vars to default value
     init = tf.global_variables_initializer()
 
-    # Start training
+    # start tf training
     with tf.Session() as sess:
 
-        # Run the initializer
+        # run the initializer
         sess.run(init)
 
         for step in range(1, training_steps + 1):
             batch_x, batch_y = render_batch(batch_size, train_x, train_y)
-            # Reshape data to get 100 seq of 3 elements (y,p,r)
+            # reshape data to get 100 seq of 3 elements (y,p,r)
             batch_x = batch_x.reshape((batch_size, timesteps, num_input))
             # run optimization operation by using backprop
             sess.run(train_op, feed_dict={X: batch_x, Y: batch_y})
