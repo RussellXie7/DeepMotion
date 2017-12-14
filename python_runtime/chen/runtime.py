@@ -162,8 +162,8 @@ def training_engine(train_x, train_y, test_x, test_y):
 
         # Calculate accuracy for 128 mnist test images
         test_len = 100
-        test_data = train_x[:test_len].reshape((-1, timesteps, num_input))
-        test_label = train_y[:test_len]
+        test_data = test_x[:test_len].reshape((-1, timesteps, num_input))
+        test_label = test_y[:test_len]
         print("Testing Accuracy:", \
               sess.run(accuracy, feed_dict={X: test_data, Y: test_label}))
 
