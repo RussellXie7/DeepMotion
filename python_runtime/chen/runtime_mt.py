@@ -21,7 +21,7 @@ SPLIT_RANDOM_STATE = 42
 TEST_SIZE = 0.25
 
 # constant for mt
-THREAD_COUNT = 3
+THREAD_COUNT = 5
 SIMPLE_LEARNING_LEN = 2
 SIMPLE_BATCH_LEN = 2
 SIMPLE_HIDDEN_LEN = 2
@@ -129,7 +129,7 @@ def rnn_nodes(x, weights, biases, num_hidden):
     x = tf.unstack(x, timesteps, 1)
 
     # define a lstm cell with tensorflow
-    lstm_cell = rnn.BasicLSTMCell(num_hidden, forget_bias=1.0)
+    lstm_cell = rnn.BasicLSTMCell(num_hidden, forget_bias=1.0, reuse=tf.get_variable_scope().reuse)
 
     # get lstm cell output
     outputs, states = rnn.static_rnn(lstm_cell, x, dtype=tf.float32)
@@ -139,6 +139,7 @@ def rnn_nodes(x, weights, biases, num_hidden):
 
 
 def rnn_training_engine_worker(exp_id, train_x, train_y, test_x, test_y, layer_index, learning_index, batch_index):
+    # tf.reset_default_graph()
     def get_param(num_hidden, ):
         import tensorflow as tf
         # tf Graph input
