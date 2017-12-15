@@ -42,17 +42,13 @@ def bias_variable(shape):
 def conv1d(x, W):
     return tf.nn.conv1d(x, W, stride=1, padding='SAME', use_cudnn_on_gpu=True)
 
-# reduces array dimension by dividing 2
+# reduces array dimension by 2
 def max_pool_1x1(x):
     return tf.nn.pool(x, window_shape=[2],
                           pooling_type="MAX", padding='SAME', strides=[2])
 
-# reduce array dimension by dividing 5
-def max_pool_1x1_d5(x):
-    return tf.nn.pool(x, window_shape=[5],
-                            pooling_type="MAX", padding='SAME', strides=[5])
 
-#*********************** First Convolution Layer *************************************
+# First Convolution Layer
 # filter / kernel tensor of shape [filter_width, in_channels, out_channels]
 W_conv1 = weight_variable([60, 1, 32])
 b_conv1 = bias_variable([32])
@@ -64,34 +60,26 @@ x_motionData = tf.reshape(x, [-1, 300, 1])
 h_conv1 = tf.nn.relu(conv1d(x_motionData, W_conv1) + b_conv1)
 h_pool1 = max_pool_1x1(h_conv1)
 
-#*********************** Second Convolution Layer ************************************
+# Second Convolution Layer
 W_conv2 = weight_variable([60, 32, 64])
 b_conv2 = bias_variable([64])
 
 h_conv2 = tf.nn.relu(conv1d(h_pool1, W_conv2) + b_conv2)
 h_pool2 = max_pool_1x1(h_conv2)
 
-#*********************** Third Convolution Layer ************************************
-W_conv3 = weight_variable([60, 64, 128])
-b_conv3 = bias_variable([128])
+# Densely Connected Layer with 1024 neurons: (300/2/2 = 75)
+W_fc1 = weight_variable([75 * 64, 1024])
+b_fc1 = bias_variable([1024])
 
-h_conv3 = tf.nn.relu(conv1d(h_pool2, W_conv3) + b_conv3)
-h_pool3 = max_pool_1x1_d5(h_conv3)
-
-
-# Densely Connected Layer with 1024 neurons: (300/2/2 = 75 / 5 = 15)
-W_fc1 = weight_variable([15 * 128, 64*64])
-b_fc1 = bias_variable([64*64])
-
-h_pool3_flat = tf.reshape(h_pool3, [-1, 15 * 128])
-h_fc1 = tf.nn.relu(tf.matmul(h_pool3_flat, W_fc1) + b_fc1)
+h_pool2_flat = tf.reshape(h_pool2, [-1, 75 * 64])
+h_fc1 = tf.nn.relu(tf.matmul(h_pool2_flat, W_fc1) + b_fc1)
 
 # Dropout before the readout layer to reduce overfitting
 keep_prob = tf.placeholder(tf.float32)
 h_fc1_drop = tf.nn.dropout(h_fc1, keep_prob)
 
 # Readout layer:
-W_fc2 = weight_variable([64*64, 5])
+W_fc2 = weight_variable([1024, 5])
 b_fc2 = bias_variable([5])
 
 y_conv = tf.matmul(h_fc1_drop, W_fc2) + b_fc2
