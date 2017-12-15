@@ -14,7 +14,7 @@ CURRENT_TIMESTAMP = datetime.datetime.fromtimestamp(time.time()).strftime('%Y_%m
 RESULT_OUTPUT = 'run_rnn_mt_result_' + CURRENT_TIMESTAMP + '.log'
 LOGGER_FORMAT_HEADER = '%(asctime)s, %(levelname)s, %(message)s'
 CUTOFF_LINE = '------------------------------------------------------------------------'
-IS_ENABLE_FILE_LOGGING = False
+IS_ENABLE_FILE_LOGGING = True
 
 # general constant
 SPLIT_RANDOM_STATE = 42
@@ -140,78 +140,79 @@ def rnn_nodes(x, weights, biases, num_hidden):
 
 def rnn_training_engine_worker(exp_id, train_x, train_y, test_x, test_y, layer_index, learning_index, batch_index):
     # tf.reset_default_graph()
-    def get_param(num_hidden, ):
+    with tf.variable_scope('scope', reuse=tf.AUTO_REUSE):
+        def get_param(num_hidden, ):
+            import tensorflow as tf
+            # tf Graph input
+            X = tf.placeholder("float", [None, timesteps, num_input])
+            Y = tf.placeholder("float", [None, num_classes])
+
+            weights = {
+                'out': tf.Variable(tf.random_normal([num_hidden, num_classes]))
+            }
+            biases = {
+                'out': tf.Variable(tf.random_normal([num_classes]))
+            }
+
+            return X, Y, weights, biases
+
+        LOGGER.debug("exp id, " + str(exp_id) + ", Start RNN worker")
+
+        X, Y, weights, biases = get_param(NUM_HIDDEN_RANGE[layer_index], )
         import tensorflow as tf
-        # tf Graph input
-        X = tf.placeholder("float", [None, timesteps, num_input])
-        Y = tf.placeholder("float", [None, num_classes])
+        logits = rnn_nodes(X, weights, biases, NUM_HIDDEN_RANGE[layer_index])
+        prediction = tf.nn.softmax(logits)
 
-        weights = {
-            'out': tf.Variable(tf.random_normal([num_hidden, num_classes]))
-        }
-        biases = {
-            'out': tf.Variable(tf.random_normal([num_classes]))
-        }
+        # define loss and optimizer
+        loss_op = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits=logits, labels=Y))
+        optimizer = tf.train.GradientDescentOptimizer(learning_rate=LEARNING_RATE_RANGE[learning_index])
+        train_op = optimizer.minimize(loss_op)
 
-        return X, Y, weights, biases
+        # evaluate model (with test logits, for dropout to be disabled)
+        correct_pred = tf.equal(tf.argmax(prediction, 1), tf.argmax(Y, 1))
+        accuracy = tf.reduce_mean(tf.cast(correct_pred, tf.float32))
 
-    LOGGER.debug("exp id, " + str(exp_id) + ", Start RNN worker")
+        # assign vars to default value
+        init = tf.global_variables_initializer()
 
-    X, Y, weights, biases = get_param(NUM_HIDDEN_RANGE[layer_index], )
-    import tensorflow as tf
-    logits = rnn_nodes(X, weights, biases, NUM_HIDDEN_RANGE[layer_index])
-    prediction = tf.nn.softmax(logits)
+        # start tf training
+        config = tf.ConfigProto()
+        config.gpu_options.allow_growth = True
 
-    # define loss and optimizer
-    loss_op = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits=logits, labels=Y))
-    optimizer = tf.train.GradientDescentOptimizer(learning_rate=LEARNING_RATE_RANGE[learning_index])
-    train_op = optimizer.minimize(loss_op)
+        with tf.Session(config=config) as sess:
 
-    # evaluate model (with test logits, for dropout to be disabled)
-    correct_pred = tf.equal(tf.argmax(prediction, 1), tf.argmax(Y, 1))
-    accuracy = tf.reduce_mean(tf.cast(correct_pred, tf.float32))
+            # run the initializer
+            sess.run(init)
 
-    # assign vars to default value
-    init = tf.global_variables_initializer()
+            for step in range(1, training_steps + 1):
+                batch_x, batch_y = render_batch(BATCH_SIZE_RANGE[batch_index], train_x, train_y)
+                # reshape data to get 100 seq of 3 elements (y,p,r)
+                batch_x = batch_x.reshape((BATCH_SIZE_RANGE[batch_index], timesteps, num_input))
+                # run optimization operation by using backprop
+                sess.run(train_op, feed_dict={X: batch_x, Y: batch_y})
+                if step % display_step == 0 or step == 1:
 
-    # start tf training
-    config = tf.ConfigProto()
-    config.gpu_options.allow_growth = True
+                    # calculate batch loss and accuracy
+                    loss, acc = sess.run([loss_op, accuracy], feed_dict={X: batch_x, Y: batch_y})
+                    training_step_log = ", Step, " + str(step) + ", Minibatch Loss, " + "{:.5f}".format(loss) + ", Training Accuracy, " + "{:.5f}".format(acc)
+                    LOGGER.debug("exp id, " + str(exp_id) + training_step_log)
 
-    with tf.Session(config=config) as sess:
+            LOGGER.debug("exp id, " + str(exp_id) + ", Optimization Finished!")
 
-        # run the initializer
-        sess.run(init)
+            # calculate accuracy on testing set
+            test_data = test_x.reshape((-1, timesteps, num_input))
+            test_label = test_y
+            test_acc = sess.run(accuracy, feed_dict={X: test_data, Y: test_label})
+            test_log = ", Testing Accuracy, " + str(test_acc)
+            LOGGER.debug("exp id, " + str(exp_id) + test_log)
 
-        for step in range(1, training_steps + 1):
-            batch_x, batch_y = render_batch(BATCH_SIZE_RANGE[batch_index], train_x, train_y)
-            # reshape data to get 100 seq of 3 elements (y,p,r)
-            batch_x = batch_x.reshape((BATCH_SIZE_RANGE[batch_index], timesteps, num_input))
-            # run optimization operation by using backprop
-            sess.run(train_op, feed_dict={X: batch_x, Y: batch_y})
-            if step % display_step == 0 or step == 1:
+            train_data = train_x.reshape((-1, timesteps, num_input))
+            train_label = train_y
+            train_acc = sess.run(accuracy, feed_dict={X: train_data, Y: train_label})
+            train_log = ", Training Accuracy, " + str(train_acc)
 
-                # calculate batch loss and accuracy
-                loss, acc = sess.run([loss_op, accuracy], feed_dict={X: batch_x, Y: batch_y})
-                training_step_log = ", Step, " + str(step) + ", Minibatch Loss, " + "{:.5f}".format(loss) + ", Training Accuracy, " + "{:.5f}".format(acc)
-                LOGGER.debug("exp id, " + str(exp_id) + training_step_log)
-
-        LOGGER.debug("exp id, " + str(exp_id) + ", Optimization Finished!")
-
-        # calculate accuracy on testing set
-        test_data = test_x.reshape((-1, timesteps, num_input))
-        test_label = test_y
-        test_acc = sess.run(accuracy, feed_dict={X: test_data, Y: test_label})
-        test_log = ", Testing Accuracy, " + str(test_acc)
-        LOGGER.debug("exp id, " + str(exp_id) + test_log)
-
-        train_data = train_x.reshape((-1, timesteps, num_input))
-        train_label = train_y
-        train_acc = sess.run(accuracy, feed_dict={X: train_data, Y: train_label})
-        train_log = ", Training Accuracy, " + str(train_acc)
-
-        LOGGER.debug("exp id, " + str(exp_id) + train_log)
-        return "exp id, " + str(exp_id) + (train_log + test_log)
+            LOGGER.debug("exp id, " + str(exp_id) + train_log)
+            return "exp id, " + str(exp_id) + (train_log + test_log)
 
 
 def rnn_training_master(train_x, train_y, test_x, test_y, is_simple_run=False):
