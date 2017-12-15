@@ -23,4 +23,17 @@ Dec.8
 	fullsets.test.labels.shape
 
 3. 目前的train:test比例应该是4：1 , test占比0.2       
+
+Dec.13
+
+1. tried couple cnn model
+	a. 2 layers config see CNN_2_layers.py
+		outcomes ranges from 0.983 to 0.987
+	b. 3 layers config see CNN_Testing.py
+		outcomes ranges from 0.975 - 0.989
+		Didn't notice too much difference by using pooling_d5 or pooling_d3
+2. I think the more layer you use and the more pooling you do and the larger the stride you use for the pooling,
+	then the more random the result would be.
+
+3. 2 layers is good enough for conv1d for this dataset
 	

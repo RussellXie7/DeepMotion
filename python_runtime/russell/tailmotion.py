@@ -24,6 +24,14 @@ E_TRUE_LABEL = 4
 RANDOM_STATE = 42
 TEST_RATE = 0.2
 
+def dense_to_one_hot(labels_dense, num_classes):
+  """Convert class labels from scalars to one-hot vectors."""
+  num_labels = labels_dense.shape[0]
+  index_offset = numpy.arange(num_labels) * num_classes
+  labels_one_hot = numpy.zeros((num_labels, num_classes))
+  labels_one_hot.flat[index_offset + labels_dense.ravel()] = 1
+  return labels_one_hot
+
 
 class DataSet(object):
     def __init__(self,
@@ -107,7 +115,7 @@ class DataSet(object):
             self._index_in_epoch = batch_size - rest_num_examples
             end = self._index_in_epoch
             motionData_new_part = self._motionData[start:end]
-            labels_new_part = self._motionData[start:end]
+            labels_new_part = self._labels[start:end]
             return numpy.concatenate((motionData_rest_part, motionData_new_part), axis=0), numpy.concatenate(
                 (labels_rest_part, labels_new_part), axis=0)
         else:
@@ -135,7 +143,7 @@ def read_format_input(read_file_name):
 
 def read_data_sets(train_dir=None,
                    fake_data=False,
-                   one_hot=False,
+                   one_hot=True,
                    dtype=dtypes.float32,
                    reshape=True,
                    validation_size=5000,
@@ -170,6 +178,9 @@ def read_data_sets(train_dir=None,
 
     x_data_set = cluster_selection_data(format_list_a, format_list_b, format_list_c, format_list_d, format_list_e)
     y_data_set = cluster_selection_label(y_data_set_a, y_data_set_b, y_data_set_c, y_data_set_d, y_data_set_e)
+
+    # apply one-hot encoding:
+    y_data_set = dense_to_one_hot(y_data_set, num_classes=5)
 
     x_train, x_test, y_train, y_test = train_test_split(x_data_set, y_data_set,
                                                         test_size=TEST_RATE, random_state=RANDOM_STATE)
