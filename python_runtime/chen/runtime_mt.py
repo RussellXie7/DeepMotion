@@ -174,7 +174,10 @@ def rnn_training_engine_worker(exp_id, train_x, train_y, test_x, test_y, layer_i
     init = tf.global_variables_initializer()
 
     # start tf training
-    with tf.Session() as sess:
+    config = tf.ConfigProto()
+    config.gpu_options.allow_growth = True
+
+    with tf.Session(config=config) as sess:
 
         # run the initializer
         sess.run(init)
