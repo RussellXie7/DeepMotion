@@ -10,10 +10,10 @@ import sys
 
 
 # constant for logger
-CURRENT_TIMESTAMP = datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d_%H:%M:%S')
-RESULT_OUTPUT = 'run_svm_result_' + CURRENT_TIMESTAMP + '.log'
+CURRENT_TIMESTAMP = datetime.datetime.fromtimestamp(time.time()).strftime('%Y_%m_%d_%H_%M_%S')
+RESULT_OUTPUT = 'run_rnn_mt_result_' + CURRENT_TIMESTAMP + '.log'
 LOGGER_FORMAT_HEADER = '%(asctime)s, %(levelname)s, %(message)s'
-CUTOFF_LINE = '--------------------------------------------------------------------------------------------------'
+CUTOFF_LINE = '------------------------------------------------------------------------'
 IS_ENABLE_FILE_LOGGING = False
 
 # general constant
@@ -23,14 +23,14 @@ TEST_SIZE = 0.25
 # constant for mt
 THREAD_COUNT = 4
 SIMPLE_LEARNING_LEN = 1
-SIMPLE_BATCH_LEN = 1
+SIMPLE_BATCH_LEN = 2
 SIMPLE_HIDDEN_LEN = 1
 
 
 # constant for rnn training
 # learning_rate = 0.001
 LEARNING_RATE_RANGE = [0.00005, 0.0001, 0.0005, 0.001, 0.005]
-training_steps = 1000 # TODO: change the steps to 10000 for better result
+training_steps = 500 # TODO: change the steps to 10000 for better result
 # batch_size = 128
 BATCH_SIZE_RANGE = [32, 64, 128, 256, 512]
 display_step = 50
@@ -39,7 +39,7 @@ display_step = 50
 num_input = 3 # we only read one set of yaw pitch row
 timesteps = 100  # timesteps - we have 100 data point for each char
 # num_hidden = 128  # hidden layer num of features
-NUM_HIDDEN_RANGE = [32, 64, 128, 256]
+NUM_HIDDEN_RANGE = [32, 64, 128, 256, 512]
 num_classes = 5  # number of data class - using a/b/c/d/e
 
 # raw data file names
@@ -68,22 +68,6 @@ ch.setFormatter(formatter)
 LOGGER.addHandler(ch)
 
 random.seed(SPLIT_RANDOM_STATE)
-
-
-def get_param(num_hidden, ):
-    import tensorflow as tf
-    # tf Graph input
-    X = tf.placeholder("float", [None, timesteps, num_input])
-    Y = tf.placeholder("float", [None, num_classes])
-
-    weights = {
-        'out': tf.Variable(tf.random_normal([num_hidden, num_classes]))
-    }
-    biases = {
-        'out': tf.Variable(tf.random_normal([num_classes]))
-    }
-
-    return X, Y, weights, biases
 
 
 def read_format_input(read_file_name):
@@ -155,7 +139,22 @@ def rnn_nodes(x, weights, biases, num_hidden):
 
 
 def rnn_training_engine_worker(exp_id, train_x, train_y, test_x, test_y, layer_index, learning_index, batch_index):
-    LOGGER.debug("exp id - " + str(exp_id) + " - Start RNN worker")
+    def get_param(num_hidden, ):
+        import tensorflow as tf
+        # tf Graph input
+        X = tf.placeholder("float", [None, timesteps, num_input])
+        Y = tf.placeholder("float", [None, num_classes])
+
+        weights = {
+            'out': tf.Variable(tf.random_normal([num_hidden, num_classes]))
+        }
+        biases = {
+            'out': tf.Variable(tf.random_normal([num_classes]))
+        }
+
+        return X, Y, weights, biases
+
+    LOGGER.debug("exp id, " + str(exp_id) + ", Start RNN worker")
 
     X, Y, weights, biases = get_param(NUM_HIDDEN_RANGE[layer_index], )
     import tensorflow as tf
@@ -190,30 +189,28 @@ def rnn_training_engine_worker(exp_id, train_x, train_y, test_x, test_y, layer_i
 
                 # calculate batch loss and accuracy
                 loss, acc = sess.run([loss_op, accuracy], feed_dict={X: batch_x, Y: batch_y})
-                training_step_log = "Step " + str(step) + ", Minibatch Loss= " + "{:.4f}".format(loss) + ", Training Accuracy= " + "{:.3f}".format(acc)
-                LOGGER.debug(training_step_log)
+                training_step_log = ", Step, " + str(step) + ", Minibatch Loss, " + "{:.5f}".format(loss) + ", Training Accuracy, " + "{:.5f}".format(acc)
+                LOGGER.debug("exp id, " + str(exp_id) + training_step_log)
 
-        LOGGER.debug("Optimization Finished!")
+        LOGGER.debug("exp id, " + str(exp_id) + ", Optimization Finished!")
 
         # calculate accuracy on testing set
         test_data = test_x.reshape((-1, timesteps, num_input))
         test_label = test_y
         test_acc = sess.run(accuracy, feed_dict={X: test_data, Y: test_label})
-        test_log = "Testing Accuracy:" + str(test_acc)
-        LOGGER.debug(test_log)
+        test_log = ", Testing Accuracy, " + str(test_acc)
+        LOGGER.debug("exp id, " + str(exp_id) + test_log)
 
         train_data = train_x.reshape((-1, timesteps, num_input))
         train_label = train_y
         train_acc = sess.run(accuracy, feed_dict={X: train_data, Y: train_label})
-        train_log = "Training Accuracy:" + str(train_acc)
+        train_log = ", Training Accuracy, " + str(train_acc)
 
-        LOGGER.debug(train_log)
-        return train_acc, test_acc
+        LOGGER.debug("exp id, " + str(exp_id) + train_log)
+        return "exp id, " + str(exp_id) + (train_log + test_log)
 
 
 def rnn_training_master(train_x, train_y, test_x, test_y, is_simple_run=False):
-    LOGGER.debug("Start RNN Training Master")
-
     rnn_results = []
     rnn_results_temp = []
     rnn_pool = multiprocessing.Pool(processes=THREAD_COUNT)
@@ -232,7 +229,8 @@ def rnn_training_master(train_x, train_y, test_x, test_y, is_simple_run=False):
     for layer_index in range(num_layer_length):
         for learning_index in range(learning_length):
             for batch_index in range(batch_length):
-                sample_result = rnn_pool.apply_async(rnn_training_engine_worker, (exp_id, train_x, train_y, test_x, test_y, layer_index, learning_index, batch_index))
+                sample_result = rnn_pool.apply_async(rnn_training_engine_worker, (exp_id, train_x, train_y, test_x, test_y, layer_index, learning_index, batch_index, ))
+                exp_id += 1
                 rnn_results_temp.append(sample_result)
 
     rnn_pool.close()
@@ -257,10 +255,17 @@ def transform_apply_result(input_list):
 def main():
     LOGGER.debug("Start reading formatted input")
     train_x, train_y, test_x, test_y = render_raw_data()
-    LOGGER.debug("End reading formatted input")
+    LOGGER.debug("End reading formatted input\n" + CUTOFF_LINE)
 
+    LOGGER.debug("Start RNN training master")
     master_res = rnn_training_master(train_x, train_y, test_x, test_y, is_simple_run=True)
-    print(master_res)
+    LOGGER.debug("End RNN training master\n" + CUTOFF_LINE)
+
+    LOGGER.debug("Start Exp summary report")
+    for res in master_res:
+        LOGGER.debug(res)
+
+    LOGGER.debug("End Exp summary report\n" + CUTOFF_LINE)
 
 
 if __name__ == '__main__':
