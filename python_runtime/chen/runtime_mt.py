@@ -1,5 +1,3 @@
-# import third-party packages
-
 import multiprocessing
 
 import numpy as np
@@ -24,13 +22,16 @@ TEST_SIZE = 0.25
 
 # constant for mt
 THREAD_COUNT = 4
+SIMPLE_LEARNING_LEN = 1
+SIMPLE_BATCH_LEN = 1
+SIMPLE_HIDDEN_LEN = 1
 
 
 # constant for rnn training
-learning_rate = 0.001
+# learning_rate = 0.001
 LEARNING_RATE_RANGE = [0.00005, 0.0001, 0.0005, 0.001, 0.005]
 training_steps = 1000 # TODO: change the steps to 10000 for better result
-batch_size = 128
+# batch_size = 128
 BATCH_SIZE_RANGE = [32, 64, 128, 256, 512]
 display_step = 50
 
@@ -154,7 +155,7 @@ def rnn_nodes(x, weights, biases, num_hidden):
 
 
 def rnn_training_engine_worker(exp_id, train_x, train_y, test_x, test_y, layer_index, learning_index, batch_index):
-    LOGGER.debug("Start RNN worker under exp id " + str(exp_id))
+    LOGGER.debug("exp id - " + str(exp_id) + " - Start RNN worker")
 
     X, Y, weights, biases = get_param(NUM_HIDDEN_RANGE[layer_index], )
     import tensorflow as tf
@@ -162,9 +163,8 @@ def rnn_training_engine_worker(exp_id, train_x, train_y, test_x, test_y, layer_i
     prediction = tf.nn.softmax(logits)
 
     # define loss and optimizer
-    loss_op = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(
-        logits=logits, labels=Y))
-    optimizer = tf.train.GradientDescentOptimizer(learning_rate=learning_rate)
+    loss_op = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits=logits, labels=Y))
+    optimizer = tf.train.GradientDescentOptimizer(learning_rate=LEARNING_RATE_RANGE[learning_index])
     train_op = optimizer.minimize(loss_op)
 
     # evaluate model (with test logits, for dropout to be disabled)
@@ -181,9 +181,9 @@ def rnn_training_engine_worker(exp_id, train_x, train_y, test_x, test_y, layer_i
         sess.run(init)
 
         for step in range(1, training_steps + 1):
-            batch_x, batch_y = render_batch(batch_size, train_x, train_y)
+            batch_x, batch_y = render_batch(BATCH_SIZE_RANGE[batch_index], train_x, train_y)
             # reshape data to get 100 seq of 3 elements (y,p,r)
-            batch_x = batch_x.reshape((batch_size, timesteps, num_input))
+            batch_x = batch_x.reshape((BATCH_SIZE_RANGE[batch_index], timesteps, num_input))
             # run optimization operation by using backprop
             sess.run(train_op, feed_dict={X: batch_x, Y: batch_y})
             if step % display_step == 0 or step == 1:
@@ -208,9 +208,10 @@ def rnn_training_engine_worker(exp_id, train_x, train_y, test_x, test_y, layer_i
         train_log = "Training Accuracy:" + str(train_acc)
 
         LOGGER.debug(train_log)
+        return train_acc, test_acc
 
 
-def rnn_training_master(train_x, train_y, test_x, test_y):
+def rnn_training_master(train_x, train_y, test_x, test_y, is_simple_run=False):
     LOGGER.debug("Start RNN Training Master")
 
     rnn_results = []
@@ -219,9 +220,18 @@ def rnn_training_master(train_x, train_y, test_x, test_y):
 
     exp_id = 0
 
-    for layer_index in range(len(NUM_HIDDEN_RANGE)):
-        for learning_index in range(len(LEARNING_RATE_RANGE)):
-            for batch_index in range(len(BATCH_SIZE_RANGE)):
+    num_layer_length = len(NUM_HIDDEN_RANGE)
+    learning_length = len(LEARNING_RATE_RANGE)
+    batch_length = len(BATCH_SIZE_RANGE)
+
+    if is_simple_run:
+        num_layer_length = SIMPLE_HIDDEN_LEN
+        learning_length = SIMPLE_LEARNING_LEN
+        batch_length = SIMPLE_BATCH_LEN
+
+    for layer_index in range(num_layer_length):
+        for learning_index in range(learning_length):
+            for batch_index in range(batch_length):
                 sample_result = rnn_pool.apply_async(rnn_training_engine_worker, (exp_id, train_x, train_y, test_x, test_y, layer_index, learning_index, batch_index))
                 rnn_results_temp.append(sample_result)
 
@@ -231,12 +241,8 @@ def rnn_training_master(train_x, train_y, test_x, test_y):
     for sample_result in rnn_results_temp:
         rnn_results.append(sample_result)
 
+    rnn_results = transform_apply_result(rnn_results)
     return rnn_results
-
-    # NUM_HIDDEN_RANGE x5
-    # LEARNING_RATE_RANGE x 10
-    # BATCH_SIZE_RANGE x5
-
 
 
 def transform_apply_result(input_list):
@@ -253,8 +259,8 @@ def main():
     train_x, train_y, test_x, test_y = render_raw_data()
     LOGGER.debug("End reading formatted input")
 
-    rnn_training_engine_worker(train_x, train_y, test_x, test_y)
-
+    master_res = rnn_training_master(train_x, train_y, test_x, test_y, is_simple_run=True)
+    print(master_res)
 
 
 if __name__ == '__main__':
