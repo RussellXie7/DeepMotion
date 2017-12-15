@@ -121,6 +121,7 @@ def render_batch(batch_size, x_data, y_data):
 def rnn_nodes(x, weights, biases, num_hidden):
     import tensorflow as tf
     from tensorflow.contrib import rnn
+    tf.reset_default_graph()
     with tf.variable_scope('scope', reuse=tf.AUTO_REUSE):
         # Prepare data shape to match `rnn` function requirements
         # Current data input shape: (batch_size, timesteps, n_input)
@@ -140,7 +141,6 @@ def rnn_nodes(x, weights, biases, num_hidden):
 
 
 def rnn_training_engine_worker(exp_id, train_x, train_y, test_x, test_y, layer_index, learning_index, batch_index):
-    # tf.reset_default_graph()
     def get_param(num_hidden, ):
         import tensorflow as tf
         # tf Graph input
