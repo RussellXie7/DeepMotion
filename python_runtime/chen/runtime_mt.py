@@ -118,28 +118,6 @@ def render_batch(batch_size, x_data, y_data):
     return render_x, render_y
 
 
-def rnn_nodes(x, weights, biases, num_hidden):
-    import tensorflow as tf
-    from tensorflow.contrib import rnn
-    tf.reset_default_graph()
-    with tf.variable_scope('scope', reuse=tf.AUTO_REUSE):
-        # Prepare data shape to match `rnn` function requirements
-        # Current data input shape: (batch_size, timesteps, n_input)
-        # Required shape: 'timesteps' tensors list of shape (batch_size, n_input)
-
-        # unstack to get a list of 'timesteps' tensors of shape (batch_size, n_input)
-        x = tf.unstack(x, timesteps, 1)
-
-        # define a lstm cell with tensorflow
-        lstm_cell = rnn.BasicLSTMCell(num_hidden, forget_bias=1.0, reuse=tf.get_variable_scope().reuse)
-
-        # get lstm cell output
-        outputs, states = rnn.static_rnn(lstm_cell, x, dtype=tf.float32)
-
-        # linear activation, using rnn inner loop last output
-        return tf.matmul(outputs[-1], weights['out']) + biases['out']
-
-
 def rnn_training_engine_worker(exp_id, train_x, train_y, test_x, test_y, layer_index, learning_index, batch_index):
     def get_param(num_hidden, ):
         import tensorflow as tf
@@ -155,6 +133,27 @@ def rnn_training_engine_worker(exp_id, train_x, train_y, test_x, test_y, layer_i
         }
 
         return X, Y, weights, biases
+
+    def rnn_nodes(x, weights, biases, num_hidden):
+        import tensorflow as tf
+        from tensorflow.contrib import rnn
+        tf.reset_default_graph()
+        with tf.variable_scope('scope', reuse=tf.AUTO_REUSE):
+            # Prepare data shape to match `rnn` function requirements
+            # Current data input shape: (batch_size, timesteps, n_input)
+            # Required shape: 'timesteps' tensors list of shape (batch_size, n_input)
+
+            # unstack to get a list of 'timesteps' tensors of shape (batch_size, n_input)
+            x = tf.unstack(x, timesteps, 1)
+
+            # define a lstm cell with tensorflow
+            lstm_cell = rnn.BasicLSTMCell(num_hidden, forget_bias=1.0, reuse=tf.get_variable_scope().reuse)
+
+            # get lstm cell output
+            outputs, states = rnn.static_rnn(lstm_cell, x, dtype=tf.float32)
+
+            # linear activation, using rnn inner loop last output
+            return tf.matmul(outputs[-1], weights['out']) + biases['out']
 
     LOGGER.debug("exp id, " + str(exp_id) + ", Start RNN worker")
 
