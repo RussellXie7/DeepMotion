@@ -22,9 +22,9 @@ TEST_SIZE = 0.25
 
 # constant for mt
 THREAD_COUNT = 4
-SIMPLE_LEARNING_LEN = 1
+SIMPLE_LEARNING_LEN = 2
 SIMPLE_BATCH_LEN = 2
-SIMPLE_HIDDEN_LEN = 1
+SIMPLE_HIDDEN_LEN = 2
 
 
 # constant for rnn training
