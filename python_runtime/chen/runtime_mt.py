@@ -1,4 +1,5 @@
 import multiprocessing
+import Queue
 
 import numpy as np
 import logging
@@ -215,10 +216,8 @@ def rnn_training_engine_worker(exp_id, train_x, train_y, test_x, test_y, layer_i
 
 
 def rnn_training_master(train_x, train_y, test_x, test_y, is_simple_run=False):
+    import tensorflow as tf
     rnn_results = []
-    rnn_results_temp = []
-    rnn_pool = multiprocessing.Pool(processes=THREAD_COUNT)
-
     exp_id = 0
 
     num_layer_length = len(NUM_HIDDEN_RANGE)
@@ -230,18 +229,34 @@ def rnn_training_master(train_x, train_y, test_x, test_y, is_simple_run=False):
         learning_length = SIMPLE_LEARNING_LEN
         batch_length = SIMPLE_BATCH_LEN
 
+    exp_params_queue = Queue.Queue()
     for layer_index in range(num_layer_length):
         for learning_index in range(learning_length):
             for batch_index in range(batch_length):
-                sample_result = rnn_pool.apply_async(rnn_training_engine_worker, (exp_id, train_x, train_y, test_x, test_y, layer_index, learning_index, batch_index, ))
-                exp_id += 1
-                rnn_results_temp.append(sample_result)
+                exp_params_queue.put((layer_index, learning_index, batch_index))
 
-    rnn_pool.close()
-    rnn_pool.join()
+    while not exp_params_queue.empty():
+        flush_mt_counter = THREAD_COUNT
 
-    for sample_result in rnn_results_temp:
-        rnn_results.append(sample_result)
+        # reset graph to prevent reusing cell
+        tf.reset_default_graph()
+        rnn_results_temp = []
+        rnn_pool = multiprocessing.Pool(processes=THREAD_COUNT)
+
+        while flush_mt_counter > 0:
+            flush_mt_counter -= 1
+            current_exp_params = exp_params_queue.get()
+            sample_result = rnn_pool.apply_async(rnn_training_engine_worker, (exp_id, train_x, train_y, test_x, test_y, current_exp_params[0], current_exp_params[1], current_exp_params[2],))
+            exp_id += 1
+            rnn_results_temp.append(sample_result)
+
+        rnn_pool.close()
+        rnn_pool.join()
+
+        for sample_result in rnn_results_temp:
+            rnn_results.append(sample_result)
+
+        LOGGER.debug("Flush RNN training master\n" + CUTOFF_LINE)
 
     rnn_results = transform_apply_result(rnn_results)
     return rnn_results
