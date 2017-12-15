@@ -58,7 +58,7 @@ formatter = logging.Formatter(LOGGER_FORMAT_HEADER)
 # setup file logging if user enable
 if IS_ENABLE_FILE_LOGGING:
     fh = logging.FileHandler(RESULT_OUTPUT)
-    fh.setLevel(logging.INFO)
+    fh.setLevel(logging.DEBUG)
     fh.setFormatter(formatter)
     LOGGER.addHandler(fh)
 
