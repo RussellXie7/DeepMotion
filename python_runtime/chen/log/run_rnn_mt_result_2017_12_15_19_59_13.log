@@ -1,0 +1,462 @@
+2017-12-15 19:59:13,097, DEBUG, Start reading formatted input
+2017-12-15 19:59:14,218, DEBUG, End reading formatted input
+------------------------------------------------------------------------
+2017-12-15 19:59:14,220, DEBUG, Start RNN training master
+2017-12-15 19:59:15,686, DEBUG, exp id, 0, Start RNN worker
+2017-12-15 19:59:15,719, DEBUG, exp id, 1, Start RNN worker
+2017-12-15 19:59:15,761, DEBUG, exp id, 2, Start RNN worker
+2017-12-15 19:59:15,849, DEBUG, exp id, 3, Start RNN worker
+2017-12-15 19:59:15,950, DEBUG, exp id, 4, Start RNN worker
+2017-12-15 19:59:52,764, DEBUG, exp id, 1, Step, 1, Minibatch Loss, 3.02779, Training Accuracy, 0.10938
+2017-12-15 19:59:58,541, DEBUG, exp id, 0, Step, 1, Minibatch Loss, 3.27008, Training Accuracy, 0.18750
+2017-12-15 20:00:01,029, DEBUG, exp id, 4, Step, 1, Minibatch Loss, 7.79822, Training Accuracy, 0.12500
+2017-12-15 20:00:05,117, DEBUG, exp id, 2, Step, 1, Minibatch Loss, 3.40582, Training Accuracy, 0.21875
+2017-12-15 20:00:05,119, DEBUG, exp id, 3, Step, 1, Minibatch Loss, 3.39578, Training Accuracy, 0.20312
+2017-12-15 20:00:24,842, DEBUG, exp id, 1, Step, 200, Minibatch Loss, 2.62018, Training Accuracy, 0.14062
+2017-12-15 20:00:32,719, DEBUG, exp id, 0, Step, 200, Minibatch Loss, 2.47475, Training Accuracy, 0.31250
+2017-12-15 20:00:36,217, DEBUG, exp id, 4, Step, 200, Minibatch Loss, 2.57537, Training Accuracy, 0.18750
+2017-12-15 20:00:41,518, DEBUG, exp id, 3, Step, 200, Minibatch Loss, 2.06451, Training Accuracy, 0.32812
+2017-12-15 20:00:41,541, DEBUG, exp id, 2, Step, 200, Minibatch Loss, 1.75683, Training Accuracy, 0.28125
+2017-12-15 20:01:02,138, DEBUG, exp id, 1, Step, 400, Minibatch Loss, 2.56833, Training Accuracy, 0.18750
+2017-12-15 20:01:09,631, DEBUG, exp id, 0, Step, 400, Minibatch Loss, 2.77806, Training Accuracy, 0.21875
+2017-12-15 20:01:12,729, DEBUG, exp id, 4, Step, 400, Minibatch Loss, 1.60766, Training Accuracy, 0.31250
+2017-12-15 20:01:18,037, DEBUG, exp id, 3, Step, 400, Minibatch Loss, 1.73754, Training Accuracy, 0.39062
+2017-12-15 20:01:19,120, DEBUG, exp id, 2, Step, 400, Minibatch Loss, 1.83461, Training Accuracy, 0.21875
+2017-12-15 20:01:39,240, DEBUG, exp id, 1, Step, 600, Minibatch Loss, 2.34738, Training Accuracy, 0.20312
+2017-12-15 20:01:46,239, DEBUG, exp id, 0, Step, 600, Minibatch Loss, 2.19017, Training Accuracy, 0.37500
+2017-12-15 20:01:48,536, DEBUG, exp id, 4, Step, 600, Minibatch Loss, 1.67758, Training Accuracy, 0.34375
+2017-12-15 20:01:55,041, DEBUG, exp id, 3, Step, 600, Minibatch Loss, 1.68324, Training Accuracy, 0.26562
+2017-12-15 20:01:55,346, DEBUG, exp id, 2, Step, 600, Minibatch Loss, 1.48295, Training Accuracy, 0.37500
+2017-12-15 20:02:17,136, DEBUG, exp id, 1, Step, 800, Minibatch Loss, 2.05171, Training Accuracy, 0.25000
+2017-12-15 20:02:21,940, DEBUG, exp id, 0, Step, 800, Minibatch Loss, 2.52857, Training Accuracy, 0.28125
+2017-12-15 20:02:23,717, DEBUG, exp id, 4, Step, 800, Minibatch Loss, 1.62156, Training Accuracy, 0.46875
+2017-12-15 20:02:32,048, DEBUG, exp id, 3, Step, 800, Minibatch Loss, 1.53911, Training Accuracy, 0.46875
+2017-12-15 20:02:32,351, DEBUG, exp id, 2, Step, 800, Minibatch Loss, 1.59177, Training Accuracy, 0.46875
+2017-12-15 20:02:54,351, DEBUG, exp id, 1, Step, 1000, Minibatch Loss, 1.92802, Training Accuracy, 0.28125
+2017-12-15 20:02:58,718, DEBUG, exp id, 0, Step, 1000, Minibatch Loss, 1.97079, Training Accuracy, 0.31250
+2017-12-15 20:02:59,924, DEBUG, exp id, 4, Step, 1000, Minibatch Loss, 1.39683, Training Accuracy, 0.59375
+2017-12-15 20:03:08,251, DEBUG, exp id, 3, Step, 1000, Minibatch Loss, 1.35506, Training Accuracy, 0.46875
+2017-12-15 20:03:09,229, DEBUG, exp id, 2, Step, 1000, Minibatch Loss, 1.45486, Training Accuracy, 0.34375
+2017-12-15 20:03:31,630, DEBUG, exp id, 1, Step, 1200, Minibatch Loss, 2.00064, Training Accuracy, 0.21875
+2017-12-15 20:03:35,639, DEBUG, exp id, 0, Step, 1200, Minibatch Loss, 1.84072, Training Accuracy, 0.34375
+2017-12-15 20:03:36,424, DEBUG, exp id, 4, Step, 1200, Minibatch Loss, 1.56281, Training Accuracy, 0.46875
+2017-12-15 20:03:45,139, DEBUG, exp id, 3, Step, 1200, Minibatch Loss, 1.18752, Training Accuracy, 0.57812
+2017-12-15 20:03:46,953, DEBUG, exp id, 2, Step, 1200, Minibatch Loss, 1.56339, Training Accuracy, 0.43750
+2017-12-15 20:04:09,019, DEBUG, exp id, 1, Step, 1400, Minibatch Loss, 1.59090, Training Accuracy, 0.32812
+2017-12-15 20:04:12,040, DEBUG, exp id, 4, Step, 1400, Minibatch Loss, 1.39336, Training Accuracy, 0.46875
+2017-12-15 20:04:12,345, DEBUG, exp id, 0, Step, 1400, Minibatch Loss, 1.54679, Training Accuracy, 0.31250
+2017-12-15 20:04:21,926, DEBUG, exp id, 3, Step, 1400, Minibatch Loss, 1.20913, Training Accuracy, 0.64062
+2017-12-15 20:04:24,034, DEBUG, exp id, 2, Step, 1400, Minibatch Loss, 1.24654, Training Accuracy, 0.46875
+2017-12-15 20:04:46,751, DEBUG, exp id, 1, Step, 1600, Minibatch Loss, 1.59785, Training Accuracy, 0.32812
+2017-12-15 20:04:48,044, DEBUG, exp id, 4, Step, 1600, Minibatch Loss, 1.28138, Training Accuracy, 0.40625
+2017-12-15 20:04:49,429, DEBUG, exp id, 0, Step, 1600, Minibatch Loss, 1.23127, Training Accuracy, 0.62500
+2017-12-15 20:04:58,447, DEBUG, exp id, 3, Step, 1600, Minibatch Loss, 1.09358, Training Accuracy, 0.57812
+2017-12-15 20:05:01,144, DEBUG, exp id, 2, Step, 1600, Minibatch Loss, 1.39690, Training Accuracy, 0.46875
+2017-12-15 20:05:24,338, DEBUG, exp id, 4, Step, 1800, Minibatch Loss, 1.13785, Training Accuracy, 0.59375
+2017-12-15 20:05:24,431, DEBUG, exp id, 1, Step, 1800, Minibatch Loss, 1.49449, Training Accuracy, 0.28125
+2017-12-15 20:05:26,132, DEBUG, exp id, 0, Step, 1800, Minibatch Loss, 1.50488, Training Accuracy, 0.46875
+2017-12-15 20:05:35,130, DEBUG, exp id, 3, Step, 1800, Minibatch Loss, 1.30373, Training Accuracy, 0.56250
+2017-12-15 20:05:37,334, DEBUG, exp id, 2, Step, 1800, Minibatch Loss, 1.39947, Training Accuracy, 0.50000
+2017-12-15 20:05:59,725, DEBUG, exp id, 4, Step, 2000, Minibatch Loss, 1.14430, Training Accuracy, 0.75000
+2017-12-15 20:06:02,016, DEBUG, exp id, 0, Step, 2000, Minibatch Loss, 1.41608, Training Accuracy, 0.50000
+2017-12-15 20:06:02,025, DEBUG, exp id, 1, Step, 2000, Minibatch Loss, 1.48549, Training Accuracy, 0.35938
+2017-12-15 20:06:13,147, DEBUG, exp id, 3, Step, 2000, Minibatch Loss, 1.24852, Training Accuracy, 0.53125
+2017-12-15 20:06:13,445, DEBUG, exp id, 2, Step, 2000, Minibatch Loss, 1.51823, Training Accuracy, 0.46875
+2017-12-15 20:06:36,336, DEBUG, exp id, 4, Step, 2200, Minibatch Loss, 1.12997, Training Accuracy, 0.56250
+2017-12-15 20:06:39,039, DEBUG, exp id, 0, Step, 2200, Minibatch Loss, 1.33510, Training Accuracy, 0.43750
+2017-12-15 20:06:39,134, DEBUG, exp id, 1, Step, 2200, Minibatch Loss, 1.23105, Training Accuracy, 0.46875
+2017-12-15 20:06:49,535, DEBUG, exp id, 3, Step, 2200, Minibatch Loss, 1.07751, Training Accuracy, 0.62500
+2017-12-15 20:06:50,048, DEBUG, exp id, 2, Step, 2200, Minibatch Loss, 1.24398, Training Accuracy, 0.59375
+2017-12-15 20:07:12,953, DEBUG, exp id, 4, Step, 2400, Minibatch Loss, 1.04164, Training Accuracy, 0.50000
+2017-12-15 20:07:15,148, DEBUG, exp id, 0, Step, 2400, Minibatch Loss, 1.64610, Training Accuracy, 0.34375
+2017-12-15 20:07:17,151, DEBUG, exp id, 1, Step, 2400, Minibatch Loss, 1.48868, Training Accuracy, 0.46875
+2017-12-15 20:07:26,538, DEBUG, exp id, 2, Step, 2400, Minibatch Loss, 1.45422, Training Accuracy, 0.43750
+2017-12-15 20:07:26,937, DEBUG, exp id, 3, Step, 2400, Minibatch Loss, 1.03439, Training Accuracy, 0.62500
+2017-12-15 20:07:49,846, DEBUG, exp id, 4, Step, 2600, Minibatch Loss, 1.08146, Training Accuracy, 0.50000
+2017-12-15 20:07:51,321, DEBUG, exp id, 0, Step, 2600, Minibatch Loss, 1.14378, Training Accuracy, 0.62500
+2017-12-15 20:07:55,132, DEBUG, exp id, 1, Step, 2600, Minibatch Loss, 1.21635, Training Accuracy, 0.50000
+2017-12-15 20:08:02,522, DEBUG, exp id, 2, Step, 2600, Minibatch Loss, 1.14931, Training Accuracy, 0.50000
+2017-12-15 20:08:03,032, DEBUG, exp id, 3, Step, 2600, Minibatch Loss, 1.09374, Training Accuracy, 0.56250
+2017-12-15 20:08:26,150, DEBUG, exp id, 4, Step, 2800, Minibatch Loss, 1.26710, Training Accuracy, 0.50000
+2017-12-15 20:08:28,041, DEBUG, exp id, 0, Step, 2800, Minibatch Loss, 1.11756, Training Accuracy, 0.53125
+2017-12-15 20:08:32,436, DEBUG, exp id, 1, Step, 2800, Minibatch Loss, 1.31211, Training Accuracy, 0.43750
+2017-12-15 20:08:38,952, DEBUG, exp id, 2, Step, 2800, Minibatch Loss, 0.85023, Training Accuracy, 0.81250
+2017-12-15 20:08:39,340, DEBUG, exp id, 3, Step, 2800, Minibatch Loss, 1.00361, Training Accuracy, 0.60938
+2017-12-15 20:09:03,227, DEBUG, exp id, 4, Step, 3000, Minibatch Loss, 1.05781, Training Accuracy, 0.46875
+2017-12-15 20:09:04,339, DEBUG, exp id, 0, Step, 3000, Minibatch Loss, 1.21244, Training Accuracy, 0.53125
+2017-12-15 20:09:09,846, DEBUG, exp id, 1, Step, 3000, Minibatch Loss, 1.36262, Training Accuracy, 0.45312
+2017-12-15 20:09:15,426, DEBUG, exp id, 3, Step, 3000, Minibatch Loss, 1.08121, Training Accuracy, 0.59375
+2017-12-15 20:09:15,736, DEBUG, exp id, 2, Step, 3000, Minibatch Loss, 1.00076, Training Accuracy, 0.65625
+2017-12-15 20:09:39,320, DEBUG, exp id, 4, Step, 3200, Minibatch Loss, 1.03788, Training Accuracy, 0.59375
+2017-12-15 20:09:40,837, DEBUG, exp id, 0, Step, 3200, Minibatch Loss, 1.33818, Training Accuracy, 0.40625
+2017-12-15 20:09:47,939, DEBUG, exp id, 1, Step, 3200, Minibatch Loss, 1.47036, Training Accuracy, 0.43750
+2017-12-15 20:09:52,324, DEBUG, exp id, 3, Step, 3200, Minibatch Loss, 1.05829, Training Accuracy, 0.70312
+2017-12-15 20:09:52,426, DEBUG, exp id, 2, Step, 3200, Minibatch Loss, 1.14696, Training Accuracy, 0.56250
+2017-12-15 20:10:15,847, DEBUG, exp id, 4, Step, 3400, Minibatch Loss, 0.89787, Training Accuracy, 0.71875
+2017-12-15 20:10:18,039, DEBUG, exp id, 0, Step, 3400, Minibatch Loss, 1.59701, Training Accuracy, 0.43750
+2017-12-15 20:10:26,131, DEBUG, exp id, 1, Step, 3400, Minibatch Loss, 1.11506, Training Accuracy, 0.53125
+2017-12-15 20:10:28,926, DEBUG, exp id, 3, Step, 3400, Minibatch Loss, 1.16681, Training Accuracy, 0.59375
+2017-12-15 20:10:29,219, DEBUG, exp id, 2, Step, 3400, Minibatch Loss, 1.12807, Training Accuracy, 0.62500
+2017-12-15 20:10:52,529, DEBUG, exp id, 4, Step, 3600, Minibatch Loss, 1.33679, Training Accuracy, 0.43750
+2017-12-15 20:10:54,138, DEBUG, exp id, 0, Step, 3600, Minibatch Loss, 1.27585, Training Accuracy, 0.65625
+2017-12-15 20:11:03,518, DEBUG, exp id, 1, Step, 3600, Minibatch Loss, 1.38370, Training Accuracy, 0.51562
+2017-12-15 20:11:06,333, DEBUG, exp id, 3, Step, 3600, Minibatch Loss, 0.89591, Training Accuracy, 0.68750
+2017-12-15 20:11:06,449, DEBUG, exp id, 2, Step, 3600, Minibatch Loss, 1.07295, Training Accuracy, 0.59375
+2017-12-15 20:11:29,748, DEBUG, exp id, 4, Step, 3800, Minibatch Loss, 0.97846, Training Accuracy, 0.65625
+2017-12-15 20:11:30,229, DEBUG, exp id, 0, Step, 3800, Minibatch Loss, 1.01366, Training Accuracy, 0.65625
+2017-12-15 20:11:41,217, DEBUG, exp id, 1, Step, 3800, Minibatch Loss, 1.15019, Training Accuracy, 0.59375
+2017-12-15 20:11:43,450, DEBUG, exp id, 2, Step, 3800, Minibatch Loss, 1.00433, Training Accuracy, 0.56250
+2017-12-15 20:11:43,518, DEBUG, exp id, 3, Step, 3800, Minibatch Loss, 1.08045, Training Accuracy, 0.62500
+2017-12-15 20:12:06,228, DEBUG, exp id, 4, Step, 4000, Minibatch Loss, 0.96089, Training Accuracy, 0.68750
+2017-12-15 20:12:06,636, DEBUG, exp id, 0, Step, 4000, Minibatch Loss, 1.25726, Training Accuracy, 0.53125
+2017-12-15 20:12:19,247, DEBUG, exp id, 1, Step, 4000, Minibatch Loss, 1.29630, Training Accuracy, 0.43750
+2017-12-15 20:12:19,739, DEBUG, exp id, 3, Step, 4000, Minibatch Loss, 1.06440, Training Accuracy, 0.62500
+2017-12-15 20:12:19,826, DEBUG, exp id, 2, Step, 4000, Minibatch Loss, 1.25776, Training Accuracy, 0.43750
+2017-12-15 20:12:42,125, DEBUG, exp id, 4, Step, 4200, Minibatch Loss, 1.12633, Training Accuracy, 0.56250
+2017-12-15 20:12:43,052, DEBUG, exp id, 0, Step, 4200, Minibatch Loss, 0.79525, Training Accuracy, 0.71875
+2017-12-15 20:12:55,430, DEBUG, exp id, 2, Step, 4200, Minibatch Loss, 1.10658, Training Accuracy, 0.59375
+2017-12-15 20:12:55,452, DEBUG, exp id, 3, Step, 4200, Minibatch Loss, 0.95820, Training Accuracy, 0.64062
+2017-12-15 20:12:56,817, DEBUG, exp id, 1, Step, 4200, Minibatch Loss, 1.24694, Training Accuracy, 0.59375
+2017-12-15 20:13:18,338, DEBUG, exp id, 4, Step, 4400, Minibatch Loss, 1.11670, Training Accuracy, 0.56250
+2017-12-15 20:13:19,023, DEBUG, exp id, 0, Step, 4400, Minibatch Loss, 1.12974, Training Accuracy, 0.53125
+2017-12-15 20:13:31,539, DEBUG, exp id, 2, Step, 4400, Minibatch Loss, 1.09567, Training Accuracy, 0.56250
+2017-12-15 20:13:31,751, DEBUG, exp id, 3, Step, 4400, Minibatch Loss, 1.18509, Training Accuracy, 0.45312
+2017-12-15 20:13:35,923, DEBUG, exp id, 1, Step, 4400, Minibatch Loss, 1.25464, Training Accuracy, 0.46875
+2017-12-15 20:13:54,824, DEBUG, exp id, 4, Step, 4600, Minibatch Loss, 1.00087, Training Accuracy, 0.68750
+2017-12-15 20:13:55,125, DEBUG, exp id, 0, Step, 4600, Minibatch Loss, 1.18297, Training Accuracy, 0.56250
+2017-12-15 20:14:07,625, DEBUG, exp id, 2, Step, 4600, Minibatch Loss, 0.84730, Training Accuracy, 0.65625
+2017-12-15 20:14:08,140, DEBUG, exp id, 3, Step, 4600, Minibatch Loss, 0.94193, Training Accuracy, 0.60938
+2017-12-15 20:14:14,024, DEBUG, exp id, 1, Step, 4600, Minibatch Loss, 1.14714, Training Accuracy, 0.59375
+2017-12-15 20:14:31,040, DEBUG, exp id, 4, Step, 4800, Minibatch Loss, 1.03263, Training Accuracy, 0.65625
+2017-12-15 20:14:32,241, DEBUG, exp id, 0, Step, 4800, Minibatch Loss, 1.51116, Training Accuracy, 0.40625
+2017-12-15 20:14:44,647, DEBUG, exp id, 2, Step, 4800, Minibatch Loss, 0.92287, Training Accuracy, 0.59375
+2017-12-15 20:14:45,445, DEBUG, exp id, 3, Step, 4800, Minibatch Loss, 1.03761, Training Accuracy, 0.60938
+2017-12-15 20:14:53,260, DEBUG, exp id, 1, Step, 4800, Minibatch Loss, 1.33240, Training Accuracy, 0.48438
+2017-12-15 20:15:07,845, DEBUG, exp id, 4, Step, 5000, Minibatch Loss, 0.89466, Training Accuracy, 0.68750
+2017-12-15 20:15:08,720, DEBUG, exp id, 0, Step, 5000, Minibatch Loss, 1.13945, Training Accuracy, 0.65625
+2017-12-15 20:15:21,421, DEBUG, exp id, 2, Step, 5000, Minibatch Loss, 1.09814, Training Accuracy, 0.65625
+2017-12-15 20:15:21,431, DEBUG, exp id, 3, Step, 5000, Minibatch Loss, 1.10131, Training Accuracy, 0.60938
+2017-12-15 20:15:31,645, DEBUG, exp id, 1, Step, 5000, Minibatch Loss, 1.02700, Training Accuracy, 0.62500
+2017-12-15 20:15:44,417, DEBUG, exp id, 4, Step, 5200, Minibatch Loss, 0.84175, Training Accuracy, 0.78125
+2017-12-15 20:15:45,732, DEBUG, exp id, 0, Step, 5200, Minibatch Loss, 1.18278, Training Accuracy, 0.46875
+2017-12-15 20:15:57,049, DEBUG, exp id, 3, Step, 5200, Minibatch Loss, 0.94479, Training Accuracy, 0.62500
+2017-12-15 20:15:58,241, DEBUG, exp id, 2, Step, 5200, Minibatch Loss, 0.94685, Training Accuracy, 0.62500
+2017-12-15 20:16:09,541, DEBUG, exp id, 1, Step, 5200, Minibatch Loss, 1.13911, Training Accuracy, 0.51562
+2017-12-15 20:16:21,120, DEBUG, exp id, 4, Step, 5400, Minibatch Loss, 0.94633, Training Accuracy, 0.62500
+2017-12-15 20:16:22,548, DEBUG, exp id, 0, Step, 5400, Minibatch Loss, 1.35580, Training Accuracy, 0.46875
+2017-12-15 20:16:33,141, DEBUG, exp id, 3, Step, 5400, Minibatch Loss, 1.11472, Training Accuracy, 0.54688
+2017-12-15 20:16:35,019, DEBUG, exp id, 2, Step, 5400, Minibatch Loss, 0.97524, Training Accuracy, 0.53125
+2017-12-15 20:16:46,931, DEBUG, exp id, 1, Step, 5400, Minibatch Loss, 1.12059, Training Accuracy, 0.53125
+2017-12-15 20:16:57,339, DEBUG, exp id, 4, Step, 5600, Minibatch Loss, 0.89543, Training Accuracy, 0.68750
+2017-12-15 20:16:59,328, DEBUG, exp id, 0, Step, 5600, Minibatch Loss, 1.20676, Training Accuracy, 0.50000
+2017-12-15 20:17:10,116, DEBUG, exp id, 3, Step, 5600, Minibatch Loss, 1.04355, Training Accuracy, 0.59375
+2017-12-15 20:17:11,247, DEBUG, exp id, 2, Step, 5600, Minibatch Loss, 0.91587, Training Accuracy, 0.68750
+2017-12-15 20:17:24,325, DEBUG, exp id, 1, Step, 5600, Minibatch Loss, 1.35201, Training Accuracy, 0.50000
+2017-12-15 20:17:34,142, DEBUG, exp id, 4, Step, 5800, Minibatch Loss, 1.01020, Training Accuracy, 0.56250
+2017-12-15 20:17:35,137, DEBUG, exp id, 0, Step, 5800, Minibatch Loss, 1.07098, Training Accuracy, 0.59375
+2017-12-15 20:17:46,441, DEBUG, exp id, 3, Step, 5800, Minibatch Loss, 0.87246, Training Accuracy, 0.64062
+2017-12-15 20:17:48,947, DEBUG, exp id, 2, Step, 5800, Minibatch Loss, 0.95125, Training Accuracy, 0.65625
+2017-12-15 20:18:02,316, DEBUG, exp id, 1, Step, 5800, Minibatch Loss, 1.16495, Training Accuracy, 0.51562
+2017-12-15 20:18:11,316, DEBUG, exp id, 4, Step, 6000, Minibatch Loss, 0.67820, Training Accuracy, 0.75000
+2017-12-15 20:18:12,150, DEBUG, exp id, 0, Step, 6000, Minibatch Loss, 0.92988, Training Accuracy, 0.68750
+2017-12-15 20:18:22,117, DEBUG, exp id, 3, Step, 6000, Minibatch Loss, 0.90052, Training Accuracy, 0.73438
+2017-12-15 20:18:26,623, DEBUG, exp id, 2, Step, 6000, Minibatch Loss, 0.89975, Training Accuracy, 0.68750
+2017-12-15 20:18:39,519, DEBUG, exp id, 1, Step, 6000, Minibatch Loss, 1.05426, Training Accuracy, 0.53125
+2017-12-15 20:18:48,334, DEBUG, exp id, 4, Step, 6200, Minibatch Loss, 0.84238, Training Accuracy, 0.71875
+2017-12-15 20:18:49,216, DEBUG, exp id, 0, Step, 6200, Minibatch Loss, 0.93708, Training Accuracy, 0.65625
+2017-12-15 20:18:57,124, DEBUG, exp id, 3, Step, 6200, Minibatch Loss, 0.84893, Training Accuracy, 0.65625
+2017-12-15 20:19:03,032, DEBUG, exp id, 2, Step, 6200, Minibatch Loss, 0.87439, Training Accuracy, 0.71875
+2017-12-15 20:19:16,954, DEBUG, exp id, 1, Step, 6200, Minibatch Loss, 1.31671, Training Accuracy, 0.48438
+2017-12-15 20:19:25,640, DEBUG, exp id, 0, Step, 6400, Minibatch Loss, 0.97644, Training Accuracy, 0.53125
+2017-12-15 20:19:26,236, DEBUG, exp id, 4, Step, 6400, Minibatch Loss, 0.94171, Training Accuracy, 0.65625
+2017-12-15 20:19:33,050, DEBUG, exp id, 3, Step, 6400, Minibatch Loss, 1.12962, Training Accuracy, 0.62500
+2017-12-15 20:19:39,533, DEBUG, exp id, 2, Step, 6400, Minibatch Loss, 0.84914, Training Accuracy, 0.68750
+2017-12-15 20:19:54,641, DEBUG, exp id, 1, Step, 6400, Minibatch Loss, 1.13265, Training Accuracy, 0.64062
+2017-12-15 20:20:01,423, DEBUG, exp id, 0, Step, 6600, Minibatch Loss, 1.21474, Training Accuracy, 0.46875
+2017-12-15 20:20:03,741, DEBUG, exp id, 4, Step, 6600, Minibatch Loss, 0.82250, Training Accuracy, 0.68750
+2017-12-15 20:20:08,720, DEBUG, exp id, 3, Step, 6600, Minibatch Loss, 0.97992, Training Accuracy, 0.60938
+2017-12-15 20:20:15,735, DEBUG, exp id, 2, Step, 6600, Minibatch Loss, 0.89556, Training Accuracy, 0.62500
+2017-12-15 20:20:32,232, DEBUG, exp id, 1, Step, 6600, Minibatch Loss, 1.06548, Training Accuracy, 0.60938
+2017-12-15 20:20:37,543, DEBUG, exp id, 0, Step, 6800, Minibatch Loss, 0.89119, Training Accuracy, 0.75000
+2017-12-15 20:20:40,140, DEBUG, exp id, 4, Step, 6800, Minibatch Loss, 0.67698, Training Accuracy, 0.71875
+2017-12-15 20:20:44,228, DEBUG, exp id, 3, Step, 6800, Minibatch Loss, 0.80717, Training Accuracy, 0.76562
+2017-12-15 20:20:51,636, DEBUG, exp id, 2, Step, 6800, Minibatch Loss, 1.07050, Training Accuracy, 0.50000
+2017-12-15 20:21:11,522, DEBUG, exp id, 1, Step, 6800, Minibatch Loss, 1.10223, Training Accuracy, 0.56250
+2017-12-15 20:21:13,538, DEBUG, exp id, 0, Step, 7000, Minibatch Loss, 1.12100, Training Accuracy, 0.50000
+2017-12-15 20:21:17,621, DEBUG, exp id, 4, Step, 7000, Minibatch Loss, 0.90535, Training Accuracy, 0.56250
+2017-12-15 20:21:19,951, DEBUG, exp id, 3, Step, 7000, Minibatch Loss, 0.94050, Training Accuracy, 0.65625
+2017-12-15 20:21:27,845, DEBUG, exp id, 2, Step, 7000, Minibatch Loss, 0.87022, Training Accuracy, 0.59375
+2017-12-15 20:21:49,452, DEBUG, exp id, 0, Step, 7200, Minibatch Loss, 1.24173, Training Accuracy, 0.50000
+2017-12-15 20:21:49,940, DEBUG, exp id, 1, Step, 7000, Minibatch Loss, 1.06358, Training Accuracy, 0.62500
+2017-12-15 20:21:55,519, DEBUG, exp id, 4, Step, 7200, Minibatch Loss, 0.95413, Training Accuracy, 0.62500
+2017-12-15 20:21:55,727, DEBUG, exp id, 3, Step, 7200, Minibatch Loss, 1.02928, Training Accuracy, 0.67188
+2017-12-15 20:22:04,434, DEBUG, exp id, 2, Step, 7200, Minibatch Loss, 1.10760, Training Accuracy, 0.59375
+2017-12-15 20:22:26,047, DEBUG, exp id, 0, Step, 7400, Minibatch Loss, 1.06548, Training Accuracy, 0.56250
+2017-12-15 20:22:27,649, DEBUG, exp id, 1, Step, 7200, Minibatch Loss, 0.97456, Training Accuracy, 0.64062
+2017-12-15 20:22:31,727, DEBUG, exp id, 3, Step, 7400, Minibatch Loss, 1.18780, Training Accuracy, 0.56250
+2017-12-15 20:22:32,041, DEBUG, exp id, 4, Step, 7400, Minibatch Loss, 0.80295, Training Accuracy, 0.75000
+2017-12-15 20:22:40,639, DEBUG, exp id, 2, Step, 7400, Minibatch Loss, 0.95597, Training Accuracy, 0.50000
+2017-12-15 20:23:02,727, DEBUG, exp id, 0, Step, 7600, Minibatch Loss, 0.82444, Training Accuracy, 0.68750
+2017-12-15 20:23:04,817, DEBUG, exp id, 1, Step, 7400, Minibatch Loss, 1.03195, Training Accuracy, 0.62500
+2017-12-15 20:23:07,840, DEBUG, exp id, 3, Step, 7600, Minibatch Loss, 0.88123, Training Accuracy, 0.71875
+2017-12-15 20:23:09,251, DEBUG, exp id, 4, Step, 7600, Minibatch Loss, 0.70353, Training Accuracy, 0.78125
+2017-12-15 20:23:17,928, DEBUG, exp id, 2, Step, 7600, Minibatch Loss, 0.94219, Training Accuracy, 0.71875
+2017-12-15 20:23:39,947, DEBUG, exp id, 0, Step, 7800, Minibatch Loss, 1.18795, Training Accuracy, 0.50000
+2017-12-15 20:23:42,642, DEBUG, exp id, 1, Step, 7600, Minibatch Loss, 0.97492, Training Accuracy, 0.57812
+2017-12-15 20:23:44,031, DEBUG, exp id, 3, Step, 7800, Minibatch Loss, 0.82611, Training Accuracy, 0.68750
+2017-12-15 20:23:46,022, DEBUG, exp id, 4, Step, 7800, Minibatch Loss, 0.81873, Training Accuracy, 0.65625
+2017-12-15 20:23:54,517, DEBUG, exp id, 2, Step, 7800, Minibatch Loss, 0.99490, Training Accuracy, 0.68750
+2017-12-15 20:24:16,155, DEBUG, exp id, 0, Step, 8000, Minibatch Loss, 1.08446, Training Accuracy, 0.56250
+2017-12-15 20:24:20,017, DEBUG, exp id, 3, Step, 8000, Minibatch Loss, 1.21988, Training Accuracy, 0.56250
+2017-12-15 20:24:20,148, DEBUG, exp id, 1, Step, 7800, Minibatch Loss, 1.00415, Training Accuracy, 0.57812
+2017-12-15 20:24:23,353, DEBUG, exp id, 4, Step, 8000, Minibatch Loss, 0.68341, Training Accuracy, 0.75000
+2017-12-15 20:24:30,850, DEBUG, exp id, 2, Step, 8000, Minibatch Loss, 0.97413, Training Accuracy, 0.65625
+2017-12-15 20:24:54,041, DEBUG, exp id, 0, Step, 8200, Minibatch Loss, 1.14250, Training Accuracy, 0.50000
+2017-12-15 20:24:56,240, DEBUG, exp id, 3, Step, 8200, Minibatch Loss, 0.97411, Training Accuracy, 0.68750
+2017-12-15 20:24:57,639, DEBUG, exp id, 1, Step, 8000, Minibatch Loss, 1.05247, Training Accuracy, 0.56250
+2017-12-15 20:25:00,255, DEBUG, exp id, 4, Step, 8200, Minibatch Loss, 0.93951, Training Accuracy, 0.71875
+2017-12-15 20:25:07,621, DEBUG, exp id, 2, Step, 8200, Minibatch Loss, 0.61781, Training Accuracy, 0.87500
+2017-12-15 20:25:31,646, DEBUG, exp id, 0, Step, 8400, Minibatch Loss, 0.90710, Training Accuracy, 0.62500
+2017-12-15 20:25:32,345, DEBUG, exp id, 3, Step, 8400, Minibatch Loss, 0.84776, Training Accuracy, 0.73438
+2017-12-15 20:25:34,332, DEBUG, exp id, 1, Step, 8200, Minibatch Loss, 1.18557, Training Accuracy, 0.59375
+2017-12-15 20:25:37,132, DEBUG, exp id, 4, Step, 8400, Minibatch Loss, 0.69926, Training Accuracy, 0.75000
+2017-12-15 20:25:44,021, DEBUG, exp id, 2, Step, 8400, Minibatch Loss, 0.84687, Training Accuracy, 0.62500
+2017-12-15 20:26:07,832, DEBUG, exp id, 0, Step, 8600, Minibatch Loss, 0.95767, Training Accuracy, 0.71875
+2017-12-15 20:26:08,517, DEBUG, exp id, 3, Step, 8600, Minibatch Loss, 0.91618, Training Accuracy, 0.60938
+2017-12-15 20:26:11,844, DEBUG, exp id, 1, Step, 8400, Minibatch Loss, 1.29407, Training Accuracy, 0.57812
+2017-12-15 20:26:14,426, DEBUG, exp id, 4, Step, 8600, Minibatch Loss, 0.89737, Training Accuracy, 0.65625
+2017-12-15 20:26:20,537, DEBUG, exp id, 2, Step, 8600, Minibatch Loss, 0.88662, Training Accuracy, 0.59375
+2017-12-15 20:26:44,760, DEBUG, exp id, 3, Step, 8800, Minibatch Loss, 0.84044, Training Accuracy, 0.67188
+2017-12-15 20:26:45,238, DEBUG, exp id, 0, Step, 8800, Minibatch Loss, 1.13453, Training Accuracy, 0.50000
+2017-12-15 20:26:49,348, DEBUG, exp id, 1, Step, 8600, Minibatch Loss, 1.11652, Training Accuracy, 0.54688
+2017-12-15 20:26:51,128, DEBUG, exp id, 4, Step, 8800, Minibatch Loss, 0.79570, Training Accuracy, 0.68750
+2017-12-15 20:26:57,051, DEBUG, exp id, 2, Step, 8800, Minibatch Loss, 0.97504, Training Accuracy, 0.71875
+2017-12-15 20:27:20,645, DEBUG, exp id, 3, Step, 9000, Minibatch Loss, 0.88852, Training Accuracy, 0.70312
+2017-12-15 20:27:21,538, DEBUG, exp id, 0, Step, 9000, Minibatch Loss, 0.98887, Training Accuracy, 0.68750
+2017-12-15 20:27:27,752, DEBUG, exp id, 1, Step, 8800, Minibatch Loss, 0.96658, Training Accuracy, 0.60938
+2017-12-15 20:27:27,829, DEBUG, exp id, 4, Step, 9000, Minibatch Loss, 0.66118, Training Accuracy, 0.75000
+2017-12-15 20:27:33,550, DEBUG, exp id, 2, Step, 9000, Minibatch Loss, 0.98034, Training Accuracy, 0.59375
+2017-12-15 20:27:56,939, DEBUG, exp id, 3, Step, 9200, Minibatch Loss, 1.06812, Training Accuracy, 0.64062
+2017-12-15 20:27:57,429, DEBUG, exp id, 0, Step, 9200, Minibatch Loss, 0.96321, Training Accuracy, 0.62500
+2017-12-15 20:28:04,948, DEBUG, exp id, 4, Step, 9200, Minibatch Loss, 0.82834, Training Accuracy, 0.71875
+2017-12-15 20:28:05,424, DEBUG, exp id, 1, Step, 9000, Minibatch Loss, 1.15920, Training Accuracy, 0.57812
+2017-12-15 20:28:10,021, DEBUG, exp id, 2, Step, 9200, Minibatch Loss, 0.82958, Training Accuracy, 0.75000
+2017-12-15 20:28:33,420, DEBUG, exp id, 3, Step, 9400, Minibatch Loss, 0.65990, Training Accuracy, 0.78125
+2017-12-15 20:28:34,054, DEBUG, exp id, 0, Step, 9400, Minibatch Loss, 0.98993, Training Accuracy, 0.65625
+2017-12-15 20:28:41,750, DEBUG, exp id, 4, Step, 9400, Minibatch Loss, 0.79584, Training Accuracy, 0.62500
+2017-12-15 20:28:42,733, DEBUG, exp id, 1, Step, 9200, Minibatch Loss, 1.20721, Training Accuracy, 0.48438
+2017-12-15 20:28:46,332, DEBUG, exp id, 2, Step, 9400, Minibatch Loss, 0.70580, Training Accuracy, 0.71875
+2017-12-15 20:29:09,050, DEBUG, exp id, 3, Step, 9600, Minibatch Loss, 0.77519, Training Accuracy, 0.68750
+2017-12-15 20:29:10,848, DEBUG, exp id, 0, Step, 9600, Minibatch Loss, 0.89470, Training Accuracy, 0.62500
+2017-12-15 20:29:18,724, DEBUG, exp id, 4, Step, 9600, Minibatch Loss, 0.87402, Training Accuracy, 0.65625
+2017-12-15 20:29:19,720, DEBUG, exp id, 1, Step, 9400, Minibatch Loss, 1.04949, Training Accuracy, 0.60938
+2017-12-15 20:29:22,721, DEBUG, exp id, 2, Step, 9600, Minibatch Loss, 0.81106, Training Accuracy, 0.75000
+2017-12-15 20:29:45,117, DEBUG, exp id, 3, Step, 9800, Minibatch Loss, 0.90151, Training Accuracy, 0.64062
+2017-12-15 20:29:47,938, DEBUG, exp id, 0, Step, 9800, Minibatch Loss, 0.93947, Training Accuracy, 0.71875
+2017-12-15 20:29:55,118, DEBUG, exp id, 4, Step, 9800, Minibatch Loss, 0.82304, Training Accuracy, 0.68750
+2017-12-15 20:29:57,247, DEBUG, exp id, 1, Step, 9600, Minibatch Loss, 0.88915, Training Accuracy, 0.60938
+2017-12-15 20:29:59,249, DEBUG, exp id, 2, Step, 9800, Minibatch Loss, 1.08260, Training Accuracy, 0.53125
+2017-12-15 20:30:20,921, DEBUG, exp id, 3, Step, 10000, Minibatch Loss, 0.83203, Training Accuracy, 0.68750
+2017-12-15 20:30:20,926, DEBUG, exp id, 3, Optimization Finished!
+2017-12-15 20:30:21,736, DEBUG, exp id, 3, Testing Accuracy, 0.685649
+2017-12-15 20:30:21,830, DEBUG, exp id, 3, Training Accuracy, 0.694782
+2017-12-15 20:30:23,245, DEBUG, exp id, 0, Step, 10000, Minibatch Loss, 0.65051, Training Accuracy, 0.78125
+2017-12-15 20:30:23,248, DEBUG, exp id, 0, Optimization Finished!
+2017-12-15 20:30:23,844, DEBUG, exp id, 0, Testing Accuracy, 0.604404
+2017-12-15 20:30:23,924, DEBUG, exp id, 0, Training Accuracy, 0.616515
+2017-12-15 20:30:28,017, DEBUG, exp id, 4, Step, 10000, Minibatch Loss, 0.90380, Training Accuracy, 0.68750
+2017-12-15 20:30:28,021, DEBUG, exp id, 4, Optimization Finished!
+2017-12-15 20:30:28,434, DEBUG, exp id, 4, Testing Accuracy, 0.671982
+2017-12-15 20:30:28,464, DEBUG, exp id, 4, Training Accuracy, 0.692249
+2017-12-15 20:30:29,544, DEBUG, exp id, 2, Step, 10000, Minibatch Loss, 0.78015, Training Accuracy, 0.75000
+2017-12-15 20:30:29,548, DEBUG, exp id, 2, Optimization Finished!
+2017-12-15 20:30:29,734, DEBUG, exp id, 1, Step, 9800, Minibatch Loss, 0.96653, Training Accuracy, 0.60938
+2017-12-15 20:30:29,786, DEBUG, exp id, 2, Testing Accuracy, 0.652999
+2017-12-15 20:30:29,824, DEBUG, exp id, 2, Training Accuracy, 0.667427
+2017-12-15 20:30:41,463, DEBUG, exp id, 1, Step, 10000, Minibatch Loss, 0.96144, Training Accuracy, 0.65625
+2017-12-15 20:30:41,467, DEBUG, exp id, 1, Optimization Finished!
+2017-12-15 20:30:41,672, DEBUG, exp id, 1, Testing Accuracy, 0.587699
+2017-12-15 20:30:41,697, DEBUG, exp id, 1, Training Accuracy, 0.60309
+2017-12-15 20:30:43,248, DEBUG, Flush RNN training master
+------------------------------------------------------------------------
+2017-12-15 20:30:43,341, DEBUG, exp id, 5, Start RNN worker
+2017-12-15 20:30:43,371, DEBUG, exp id, 6, Start RNN worker
+2017-12-15 20:30:43,430, DEBUG, exp id, 7, Start RNN worker
+2017-12-15 20:31:11,743, DEBUG, exp id, 6, Step, 1, Minibatch Loss, 4.88492, Training Accuracy, 0.15625
+2017-12-15 20:31:12,671, DEBUG, exp id, 5, Step, 1, Minibatch Loss, 4.54297, Training Accuracy, 0.10938
+2017-12-15 20:31:12,734, DEBUG, exp id, 7, Step, 1, Minibatch Loss, 4.18751, Training Accuracy, 0.23438
+2017-12-15 20:31:31,752, DEBUG, exp id, 6, Step, 200, Minibatch Loss, 1.73177, Training Accuracy, 0.40625
+2017-12-15 20:31:32,217, DEBUG, exp id, 7, Step, 200, Minibatch Loss, 1.77428, Training Accuracy, 0.32812
+2017-12-15 20:31:33,518, DEBUG, exp id, 5, Step, 200, Minibatch Loss, 2.62349, Training Accuracy, 0.28125
+2017-12-15 20:31:51,273, DEBUG, exp id, 7, Step, 400, Minibatch Loss, 1.37143, Training Accuracy, 0.48438
+2017-12-15 20:31:52,352, DEBUG, exp id, 6, Step, 400, Minibatch Loss, 1.55753, Training Accuracy, 0.34375
+2017-12-15 20:31:52,478, DEBUG, exp id, 5, Step, 400, Minibatch Loss, 1.84536, Training Accuracy, 0.35938
+2017-12-15 20:32:10,960, DEBUG, exp id, 7, Step, 600, Minibatch Loss, 0.93148, Training Accuracy, 0.64062
+2017-12-15 20:32:12,228, DEBUG, exp id, 5, Step, 600, Minibatch Loss, 1.49890, Training Accuracy, 0.45312
+2017-12-15 20:32:12,947, DEBUG, exp id, 6, Step, 600, Minibatch Loss, 1.58897, Training Accuracy, 0.53125
+2017-12-15 20:32:29,400, DEBUG, exp id, 7, Step, 800, Minibatch Loss, 1.37938, Training Accuracy, 0.50000
+2017-12-15 20:32:31,921, DEBUG, exp id, 5, Step, 800, Minibatch Loss, 1.48019, Training Accuracy, 0.46875
+2017-12-15 20:32:33,877, DEBUG, exp id, 6, Step, 800, Minibatch Loss, 1.09607, Training Accuracy, 0.56250
+2017-12-15 20:32:47,869, DEBUG, exp id, 7, Step, 1000, Minibatch Loss, 0.93234, Training Accuracy, 0.65625
+2017-12-15 20:32:51,518, DEBUG, exp id, 5, Step, 1000, Minibatch Loss, 1.39785, Training Accuracy, 0.57812
+2017-12-15 20:32:54,528, DEBUG, exp id, 6, Step, 1000, Minibatch Loss, 0.90981, Training Accuracy, 0.68750
+2017-12-15 20:33:06,220, DEBUG, exp id, 7, Step, 1200, Minibatch Loss, 1.15564, Training Accuracy, 0.42188
+2017-12-15 20:33:11,870, DEBUG, exp id, 5, Step, 1200, Minibatch Loss, 1.50432, Training Accuracy, 0.50000
+2017-12-15 20:33:14,757, DEBUG, exp id, 6, Step, 1200, Minibatch Loss, 0.83605, Training Accuracy, 0.65625
+2017-12-15 20:33:24,373, DEBUG, exp id, 7, Step, 1400, Minibatch Loss, 0.98277, Training Accuracy, 0.57812
+2017-12-15 20:33:31,162, DEBUG, exp id, 5, Step, 1400, Minibatch Loss, 1.37515, Training Accuracy, 0.50000
+2017-12-15 20:33:35,169, DEBUG, exp id, 6, Step, 1400, Minibatch Loss, 0.98173, Training Accuracy, 0.46875
+2017-12-15 20:33:44,379, DEBUG, exp id, 7, Step, 1600, Minibatch Loss, 1.20700, Training Accuracy, 0.54688
+2017-12-15 20:33:51,049, DEBUG, exp id, 5, Step, 1600, Minibatch Loss, 1.05652, Training Accuracy, 0.64062
+2017-12-15 20:33:55,720, DEBUG, exp id, 6, Step, 1600, Minibatch Loss, 1.11710, Training Accuracy, 0.50000
+2017-12-15 20:34:03,342, DEBUG, exp id, 7, Step, 1800, Minibatch Loss, 0.93674, Training Accuracy, 0.67188
+2017-12-15 20:34:10,364, DEBUG, exp id, 5, Step, 1800, Minibatch Loss, 1.27341, Training Accuracy, 0.56250
+2017-12-15 20:34:16,737, DEBUG, exp id, 6, Step, 1800, Minibatch Loss, 0.65732, Training Accuracy, 0.78125
+2017-12-15 20:34:21,935, DEBUG, exp id, 7, Step, 2000, Minibatch Loss, 1.10832, Training Accuracy, 0.53125
+2017-12-15 20:34:29,861, DEBUG, exp id, 5, Step, 2000, Minibatch Loss, 1.45839, Training Accuracy, 0.45312
+2017-12-15 20:34:37,539, DEBUG, exp id, 6, Step, 2000, Minibatch Loss, 0.93628, Training Accuracy, 0.75000
+2017-12-15 20:34:40,549, DEBUG, exp id, 7, Step, 2200, Minibatch Loss, 1.05244, Training Accuracy, 0.60938
+2017-12-15 20:34:49,467, DEBUG, exp id, 5, Step, 2200, Minibatch Loss, 1.06350, Training Accuracy, 0.67188
+2017-12-15 20:34:57,662, DEBUG, exp id, 6, Step, 2200, Minibatch Loss, 1.24278, Training Accuracy, 0.62500
+2017-12-15 20:34:59,241, DEBUG, exp id, 7, Step, 2400, Minibatch Loss, 0.84718, Training Accuracy, 0.67188
+2017-12-15 20:35:08,659, DEBUG, exp id, 5, Step, 2400, Minibatch Loss, 1.05731, Training Accuracy, 0.65625
+2017-12-15 20:35:18,070, DEBUG, exp id, 7, Step, 2600, Minibatch Loss, 0.71021, Training Accuracy, 0.68750
+2017-12-15 20:35:18,226, DEBUG, exp id, 6, Step, 2400, Minibatch Loss, 1.02242, Training Accuracy, 0.62500
+2017-12-15 20:35:27,854, DEBUG, exp id, 5, Step, 2600, Minibatch Loss, 1.03040, Training Accuracy, 0.65625
+2017-12-15 20:35:36,917, DEBUG, exp id, 7, Step, 2800, Minibatch Loss, 0.90402, Training Accuracy, 0.62500
+2017-12-15 20:35:38,872, DEBUG, exp id, 6, Step, 2600, Minibatch Loss, 0.63758, Training Accuracy, 0.75000
+2017-12-15 20:35:47,057, DEBUG, exp id, 5, Step, 2800, Minibatch Loss, 1.03762, Training Accuracy, 0.62500
+2017-12-15 20:35:56,834, DEBUG, exp id, 7, Step, 3000, Minibatch Loss, 0.98333, Training Accuracy, 0.57812
+2017-12-15 20:35:59,630, DEBUG, exp id, 6, Step, 2800, Minibatch Loss, 0.87949, Training Accuracy, 0.59375
+2017-12-15 20:36:06,372, DEBUG, exp id, 5, Step, 3000, Minibatch Loss, 1.15742, Training Accuracy, 0.59375
+2017-12-15 20:36:16,152, DEBUG, exp id, 7, Step, 3200, Minibatch Loss, 0.71426, Training Accuracy, 0.73438
+2017-12-15 20:36:20,037, DEBUG, exp id, 6, Step, 3000, Minibatch Loss, 0.82601, Training Accuracy, 0.68750
+2017-12-15 20:36:26,148, DEBUG, exp id, 5, Step, 3200, Minibatch Loss, 0.88514, Training Accuracy, 0.68750
+2017-12-15 20:36:34,657, DEBUG, exp id, 7, Step, 3400, Minibatch Loss, 0.75570, Training Accuracy, 0.67188
+2017-12-15 20:36:39,951, DEBUG, exp id, 6, Step, 3200, Minibatch Loss, 1.00915, Training Accuracy, 0.68750
+2017-12-15 20:36:46,151, DEBUG, exp id, 5, Step, 3400, Minibatch Loss, 1.10163, Training Accuracy, 0.57812
+2017-12-15 20:36:53,740, DEBUG, exp id, 7, Step, 3600, Minibatch Loss, 0.78979, Training Accuracy, 0.62500
+2017-12-15 20:36:59,924, DEBUG, exp id, 6, Step, 3400, Minibatch Loss, 0.90943, Training Accuracy, 0.65625
+2017-12-15 20:37:05,278, DEBUG, exp id, 5, Step, 3600, Minibatch Loss, 0.98291, Training Accuracy, 0.59375
+2017-12-15 20:37:13,244, DEBUG, exp id, 7, Step, 3800, Minibatch Loss, 0.83962, Training Accuracy, 0.65625
+2017-12-15 20:37:20,358, DEBUG, exp id, 6, Step, 3600, Minibatch Loss, 0.74750, Training Accuracy, 0.62500
+2017-12-15 20:37:25,049, DEBUG, exp id, 5, Step, 3800, Minibatch Loss, 1.13037, Training Accuracy, 0.56250
+2017-12-15 20:37:32,343, DEBUG, exp id, 7, Step, 4000, Minibatch Loss, 0.73557, Training Accuracy, 0.70312
+2017-12-15 20:37:40,763, DEBUG, exp id, 6, Step, 3800, Minibatch Loss, 0.73627, Training Accuracy, 0.75000
+2017-12-15 20:37:44,641, DEBUG, exp id, 5, Step, 4000, Minibatch Loss, 1.11698, Training Accuracy, 0.64062
+2017-12-15 20:37:51,441, DEBUG, exp id, 7, Step, 4200, Minibatch Loss, 0.80734, Training Accuracy, 0.68750
+2017-12-15 20:38:01,356, DEBUG, exp id, 6, Step, 4000, Minibatch Loss, 0.77704, Training Accuracy, 0.71875
+2017-12-15 20:38:04,274, DEBUG, exp id, 5, Step, 4200, Minibatch Loss, 1.12567, Training Accuracy, 0.57812
+2017-12-15 20:38:10,073, DEBUG, exp id, 7, Step, 4400, Minibatch Loss, 0.83531, Training Accuracy, 0.65625
+2017-12-15 20:38:21,624, DEBUG, exp id, 6, Step, 4200, Minibatch Loss, 1.05573, Training Accuracy, 0.50000
+2017-12-15 20:38:23,860, DEBUG, exp id, 5, Step, 4400, Minibatch Loss, 0.98352, Training Accuracy, 0.65625
+2017-12-15 20:38:28,828, DEBUG, exp id, 7, Step, 4600, Minibatch Loss, 0.82543, Training Accuracy, 0.62500
+2017-12-15 20:38:42,056, DEBUG, exp id, 6, Step, 4400, Minibatch Loss, 0.66782, Training Accuracy, 0.75000
+2017-12-15 20:38:43,252, DEBUG, exp id, 5, Step, 4600, Minibatch Loss, 1.04074, Training Accuracy, 0.64062
+2017-12-15 20:38:47,363, DEBUG, exp id, 7, Step, 4800, Minibatch Loss, 0.86050, Training Accuracy, 0.70312
+2017-12-15 20:39:02,937, DEBUG, exp id, 6, Step, 4600, Minibatch Loss, 1.13085, Training Accuracy, 0.59375
+2017-12-15 20:39:03,245, DEBUG, exp id, 5, Step, 4800, Minibatch Loss, 0.89001, Training Accuracy, 0.64062
+2017-12-15 20:39:05,870, DEBUG, exp id, 7, Step, 5000, Minibatch Loss, 0.79135, Training Accuracy, 0.65625
+2017-12-15 20:39:23,017, DEBUG, exp id, 5, Step, 5000, Minibatch Loss, 0.91763, Training Accuracy, 0.68750
+2017-12-15 20:39:23,178, DEBUG, exp id, 6, Step, 4800, Minibatch Loss, 0.63115, Training Accuracy, 0.84375
+2017-12-15 20:39:24,238, DEBUG, exp id, 7, Step, 5200, Minibatch Loss, 0.71538, Training Accuracy, 0.75000
+2017-12-15 20:39:42,634, DEBUG, exp id, 5, Step, 5200, Minibatch Loss, 0.94496, Training Accuracy, 0.57812
+2017-12-15 20:39:43,055, DEBUG, exp id, 7, Step, 5400, Minibatch Loss, 0.82746, Training Accuracy, 0.67188
+2017-12-15 20:39:43,469, DEBUG, exp id, 6, Step, 5000, Minibatch Loss, 0.64642, Training Accuracy, 0.84375
+2017-12-15 20:40:02,135, DEBUG, exp id, 7, Step, 5600, Minibatch Loss, 0.65844, Training Accuracy, 0.76562
+2017-12-15 20:40:02,633, DEBUG, exp id, 5, Step, 5400, Minibatch Loss, 0.85637, Training Accuracy, 0.71875
+2017-12-15 20:40:03,669, DEBUG, exp id, 6, Step, 5200, Minibatch Loss, 1.18178, Training Accuracy, 0.53125
+2017-12-15 20:40:20,861, DEBUG, exp id, 7, Step, 5800, Minibatch Loss, 0.88254, Training Accuracy, 0.60938
+2017-12-15 20:40:22,920, DEBUG, exp id, 5, Step, 5600, Minibatch Loss, 0.81954, Training Accuracy, 0.73438
+2017-12-15 20:40:23,625, DEBUG, exp id, 6, Step, 5400, Minibatch Loss, 0.87644, Training Accuracy, 0.75000
+2017-12-15 20:40:40,059, DEBUG, exp id, 7, Step, 6000, Minibatch Loss, 0.86215, Training Accuracy, 0.59375
+2017-12-15 20:40:42,568, DEBUG, exp id, 5, Step, 5800, Minibatch Loss, 1.02569, Training Accuracy, 0.57812
+2017-12-15 20:40:43,862, DEBUG, exp id, 6, Step, 5600, Minibatch Loss, 0.95191, Training Accuracy, 0.75000
+2017-12-15 20:40:58,931, DEBUG, exp id, 7, Step, 6200, Minibatch Loss, 0.85075, Training Accuracy, 0.68750
+2017-12-15 20:41:02,342, DEBUG, exp id, 5, Step, 6000, Minibatch Loss, 1.12046, Training Accuracy, 0.62500
+2017-12-15 20:41:04,471, DEBUG, exp id, 6, Step, 5800, Minibatch Loss, 0.89458, Training Accuracy, 0.59375
+2017-12-15 20:41:18,571, DEBUG, exp id, 7, Step, 6400, Minibatch Loss, 0.64037, Training Accuracy, 0.76562
+2017-12-15 20:41:21,761, DEBUG, exp id, 5, Step, 6200, Minibatch Loss, 0.83603, Training Accuracy, 0.68750
+2017-12-15 20:41:24,650, DEBUG, exp id, 6, Step, 6000, Minibatch Loss, 0.71000, Training Accuracy, 0.75000
+2017-12-15 20:41:37,626, DEBUG, exp id, 7, Step, 6600, Minibatch Loss, 0.63496, Training Accuracy, 0.71875
+2017-12-15 20:41:40,918, DEBUG, exp id, 5, Step, 6400, Minibatch Loss, 0.94189, Training Accuracy, 0.64062
+2017-12-15 20:41:45,717, DEBUG, exp id, 6, Step, 6200, Minibatch Loss, 0.82918, Training Accuracy, 0.78125
+2017-12-15 20:41:56,529, DEBUG, exp id, 7, Step, 6800, Minibatch Loss, 0.65299, Training Accuracy, 0.76562
+2017-12-15 20:42:00,241, DEBUG, exp id, 5, Step, 6600, Minibatch Loss, 0.96894, Training Accuracy, 0.71875
+2017-12-15 20:42:06,252, DEBUG, exp id, 6, Step, 6400, Minibatch Loss, 0.72231, Training Accuracy, 0.78125
+2017-12-15 20:42:15,369, DEBUG, exp id, 7, Step, 7000, Minibatch Loss, 0.81165, Training Accuracy, 0.70312
+2017-12-15 20:42:19,675, DEBUG, exp id, 5, Step, 6800, Minibatch Loss, 0.88787, Training Accuracy, 0.65625
+2017-12-15 20:42:26,557, DEBUG, exp id, 6, Step, 6600, Minibatch Loss, 0.82801, Training Accuracy, 0.71875
+2017-12-15 20:42:34,017, DEBUG, exp id, 7, Step, 7200, Minibatch Loss, 0.77061, Training Accuracy, 0.70312
+2017-12-15 20:42:39,067, DEBUG, exp id, 5, Step, 7000, Minibatch Loss, 0.90804, Training Accuracy, 0.64062
+2017-12-15 20:42:46,762, DEBUG, exp id, 6, Step, 6800, Minibatch Loss, 0.69465, Training Accuracy, 0.81250
+2017-12-15 20:42:52,553, DEBUG, exp id, 7, Step, 7400, Minibatch Loss, 0.74190, Training Accuracy, 0.76562
+2017-12-15 20:42:58,217, DEBUG, exp id, 5, Step, 7200, Minibatch Loss, 1.05783, Training Accuracy, 0.59375
+2017-12-15 20:43:07,575, DEBUG, exp id, 6, Step, 7000, Minibatch Loss, 0.80946, Training Accuracy, 0.71875
+2017-12-15 20:43:11,135, DEBUG, exp id, 7, Step, 7600, Minibatch Loss, 0.84085, Training Accuracy, 0.68750
+2017-12-15 20:43:17,249, DEBUG, exp id, 5, Step, 7400, Minibatch Loss, 0.95182, Training Accuracy, 0.62500
+2017-12-15 20:43:27,917, DEBUG, exp id, 6, Step, 7200, Minibatch Loss, 0.70395, Training Accuracy, 0.81250
+2017-12-15 20:43:30,531, DEBUG, exp id, 7, Step, 7800, Minibatch Loss, 0.68710, Training Accuracy, 0.78125
+2017-12-15 20:43:36,717, DEBUG, exp id, 5, Step, 7600, Minibatch Loss, 0.84572, Training Accuracy, 0.75000
+2017-12-15 20:43:48,833, DEBUG, exp id, 6, Step, 7400, Minibatch Loss, 0.89642, Training Accuracy, 0.71875
+2017-12-15 20:43:49,438, DEBUG, exp id, 7, Step, 8000, Minibatch Loss, 0.72852, Training Accuracy, 0.67188
+2017-12-15 20:43:55,564, DEBUG, exp id, 5, Step, 7800, Minibatch Loss, 0.98993, Training Accuracy, 0.59375
+2017-12-15 20:44:08,451, DEBUG, exp id, 7, Step, 8200, Minibatch Loss, 0.68391, Training Accuracy, 0.75000
+2017-12-15 20:44:09,629, DEBUG, exp id, 6, Step, 7600, Minibatch Loss, 0.61353, Training Accuracy, 0.78125
+2017-12-15 20:44:15,145, DEBUG, exp id, 5, Step, 8000, Minibatch Loss, 0.89720, Training Accuracy, 0.70312
+2017-12-15 20:44:27,423, DEBUG, exp id, 7, Step, 8400, Minibatch Loss, 0.76831, Training Accuracy, 0.68750
+2017-12-15 20:44:30,244, DEBUG, exp id, 6, Step, 7800, Minibatch Loss, 0.84910, Training Accuracy, 0.68750
+2017-12-15 20:44:34,654, DEBUG, exp id, 5, Step, 8200, Minibatch Loss, 0.90201, Training Accuracy, 0.67188
+2017-12-15 20:44:45,731, DEBUG, exp id, 7, Step, 8600, Minibatch Loss, 0.65744, Training Accuracy, 0.75000
+2017-12-15 20:44:50,427, DEBUG, exp id, 6, Step, 8000, Minibatch Loss, 0.80783, Training Accuracy, 0.75000
+2017-12-15 20:44:53,649, DEBUG, exp id, 5, Step, 8400, Minibatch Loss, 0.99833, Training Accuracy, 0.62500
+2017-12-15 20:45:04,365, DEBUG, exp id, 7, Step, 8800, Minibatch Loss, 0.64129, Training Accuracy, 0.78125
+2017-12-15 20:45:10,620, DEBUG, exp id, 6, Step, 8200, Minibatch Loss, 0.95201, Training Accuracy, 0.78125
+2017-12-15 20:45:13,425, DEBUG, exp id, 5, Step, 8600, Minibatch Loss, 0.87176, Training Accuracy, 0.71875
+2017-12-15 20:45:22,976, DEBUG, exp id, 7, Step, 9000, Minibatch Loss, 0.63541, Training Accuracy, 0.78125
+2017-12-15 20:45:30,861, DEBUG, exp id, 6, Step, 8400, Minibatch Loss, 0.92777, Training Accuracy, 0.75000
+2017-12-15 20:45:33,044, DEBUG, exp id, 5, Step, 8800, Minibatch Loss, 0.70861, Training Accuracy, 0.81250
+2017-12-15 20:45:41,641, DEBUG, exp id, 7, Step, 9200, Minibatch Loss, 0.62419, Training Accuracy, 0.79688
+2017-12-15 20:45:50,375, DEBUG, exp id, 6, Step, 8600, Minibatch Loss, 0.85994, Training Accuracy, 0.68750
+2017-12-15 20:45:53,148, DEBUG, exp id, 5, Step, 9000, Minibatch Loss, 0.89034, Training Accuracy, 0.71875
+2017-12-15 20:46:01,049, DEBUG, exp id, 7, Step, 9400, Minibatch Loss, 0.53788, Training Accuracy, 0.79688
+2017-12-15 20:46:11,045, DEBUG, exp id, 6, Step, 8800, Minibatch Loss, 0.69426, Training Accuracy, 0.84375
+2017-12-15 20:46:12,768, DEBUG, exp id, 5, Step, 9200, Minibatch Loss, 0.82629, Training Accuracy, 0.76562
+2017-12-15 20:46:19,874, DEBUG, exp id, 7, Step, 9600, Minibatch Loss, 0.70494, Training Accuracy, 0.78125
+2017-12-15 20:46:31,165, DEBUG, exp id, 6, Step, 9000, Minibatch Loss, 0.60549, Training Accuracy, 0.75000
+2017-12-15 20:46:31,763, DEBUG, exp id, 5, Step, 9400, Minibatch Loss, 0.97161, Training Accuracy, 0.60938
+2017-12-15 20:46:39,151, DEBUG, exp id, 7, Step, 9800, Minibatch Loss, 0.61716, Training Accuracy, 0.81250
+2017-12-15 20:46:51,526, DEBUG, exp id, 6, Step, 9200, Minibatch Loss, 1.00762, Training Accuracy, 0.71875
+2017-12-15 20:46:51,940, DEBUG, exp id, 5, Step, 9600, Minibatch Loss, 1.01094, Training Accuracy, 0.57812
+2017-12-15 20:46:58,243, DEBUG, exp id, 7, Step, 10000, Minibatch Loss, 0.70491, Training Accuracy, 0.75000
+2017-12-15 20:46:58,246, DEBUG, exp id, 7, Optimization Finished!
+2017-12-15 20:46:58,658, DEBUG, exp id, 7, Testing Accuracy, 0.718299
+2017-12-15 20:46:58,726, DEBUG, exp id, 7, Training Accuracy, 0.755572
+2017-12-15 20:47:06,933, DEBUG, exp id, 5, Step, 9800, Minibatch Loss, 0.70076, Training Accuracy, 0.75000
+2017-12-15 20:47:07,234, DEBUG, exp id, 6, Step, 9400, Minibatch Loss, 0.61699, Training Accuracy, 0.78125
+2017-12-15 20:47:18,636, DEBUG, exp id, 5, Step, 10000, Minibatch Loss, 0.85629, Training Accuracy, 0.73438
+2017-12-15 20:47:18,639, DEBUG, exp id, 5, Optimization Finished!
+2017-12-15 20:47:18,833, DEBUG, exp id, 5, Testing Accuracy, 0.655277
+2017-12-15 20:47:18,860, DEBUG, exp id, 5, Training Accuracy, 0.684397
+2017-12-15 20:47:19,606, DEBUG, exp id, 6, Step, 9600, Minibatch Loss, 0.45753, Training Accuracy, 0.87500
+2017-12-15 20:47:30,827, DEBUG, exp id, 6, Step, 9800, Minibatch Loss, 0.71026, Training Accuracy, 0.78125
+2017-12-15 20:47:42,588, DEBUG, exp id, 6, Step, 10000, Minibatch Loss, 0.71458, Training Accuracy, 0.75000
+2017-12-15 20:47:42,591, DEBUG, exp id, 6, Optimization Finished!
+2017-12-15 20:47:42,791, DEBUG, exp id, 6, Testing Accuracy, 0.711465
+2017-12-15 20:47:42,818, DEBUG, exp id, 6, Training Accuracy, 0.747467
+2017-12-15 20:47:43,712, DEBUG, Flush RNN training master
+------------------------------------------------------------------------
+2017-12-15 20:47:43,714, DEBUG, End RNN training master
+------------------------------------------------------------------------
+2017-12-15 20:47:43,714, DEBUG, Start Exp summary report
+2017-12-15 20:47:43,715, DEBUG, exp id, 0, Training Accuracy, 0.616515, Testing Accuracy, 0.604404
+2017-12-15 20:47:43,716, DEBUG, exp id, 1, Training Accuracy, 0.60309, Testing Accuracy, 0.587699
+2017-12-15 20:47:43,717, DEBUG, exp id, 2, Training Accuracy, 0.667427, Testing Accuracy, 0.652999
+2017-12-15 20:47:43,718, DEBUG, exp id, 3, Training Accuracy, 0.694782, Testing Accuracy, 0.685649
+2017-12-15 20:47:43,719, DEBUG, exp id, 4, Training Accuracy, 0.692249, Testing Accuracy, 0.671982
+2017-12-15 20:47:43,720, DEBUG, exp id, 5, Training Accuracy, 0.684397, Testing Accuracy, 0.655277
+2017-12-15 20:47:43,721, DEBUG, exp id, 6, Training Accuracy, 0.747467, Testing Accuracy, 0.711465
+2017-12-15 20:47:43,722, DEBUG, exp id, 7, Training Accuracy, 0.755572, Testing Accuracy, 0.718299
+2017-12-15 20:47:43,722, DEBUG, End Exp summary report
+------------------------------------------------------------------------
+2017-12-15 21:12:31,097, DEBUG, Start reading formatted input

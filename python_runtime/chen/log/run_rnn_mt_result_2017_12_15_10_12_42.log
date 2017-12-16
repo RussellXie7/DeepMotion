@@ -1,0 +1,16 @@
+2017-12-15 10:12:42,012, DEBUG, Start reading formatted input
+2017-12-15 10:12:42,798, DEBUG, End reading formatted input
+------------------------------------------------------------------------
+2017-12-15 10:12:42,800, DEBUG, Start RNN training master
+2017-12-15 10:12:43,925, DEBUG, exp id, 0, Start RNN worker
+2017-12-15 10:12:43,964, DEBUG, exp id, 1, Start RNN worker
+2017-12-15 10:12:44,034, DEBUG, exp id, 2, Start RNN worker
+2017-12-15 10:12:44,126, DEBUG, exp id, 3, Start RNN worker
+2017-12-15 10:12:45,083, DEBUG, Flush RNN training master
+------------------------------------------------------------------------
+2017-12-15 10:12:45,192, DEBUG, exp id, 4, Start RNN worker
+2017-12-15 10:12:45,232, DEBUG, exp id, 5, Start RNN worker
+2017-12-15 10:12:45,271, DEBUG, exp id, 6, Start RNN worker
+2017-12-15 10:12:45,351, DEBUG, exp id, 7, Start RNN worker
+2017-12-15 10:12:46,258, DEBUG, Flush RNN training master
+------------------------------------------------------------------------

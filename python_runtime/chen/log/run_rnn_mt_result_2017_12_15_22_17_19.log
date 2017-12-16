@@ -1,0 +1,9 @@
+2017-12-15 22:17:19,790, DEBUG, Start reading formatted input
+2017-12-15 22:17:26,375, DEBUG, End reading formatted input
+------------------------------------------------------------------------
+2017-12-15 22:17:26,379, DEBUG, Start RNN training master
+2017-12-15 22:17:32,482, DEBUG, exp id, 0, Start RNN worker
+2017-12-15 22:18:40,788, DEBUG, exp id, 0, Step, 1, Minibatch Loss, 4.94333, Training Accuracy, 0.25000
+2017-12-15 22:19:27,095, DEBUG, exp id, 0, Step, 200, Minibatch Loss, 1.08739, Training Accuracy, 0.60938
+2017-12-15 22:20:11,497, DEBUG, exp id, 0, Step, 400, Minibatch Loss, 0.77506, Training Accuracy, 0.75000
+2017-12-15 22:20:54,876, DEBUG, exp id, 0, Step, 600, Minibatch Loss, 0.65661, Training Accuracy, 0.85938
