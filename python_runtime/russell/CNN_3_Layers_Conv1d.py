@@ -8,6 +8,7 @@
 from __future__ import print_function
 
 import os
+import csv
 
 # Set GPU number.
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
@@ -48,9 +49,9 @@ def max_pool_1x1(x):
                           pooling_type="MAX", padding='SAME', strides=[2])
 
 # reduce array dimension by dividing 5
-def max_pool_1x1_d5(x):
-    return tf.nn.pool(x, window_shape=[5],
-                            pooling_type="MAX", padding='SAME', strides=[5])
+def max_pool_1x1_d3(x):
+    return tf.nn.pool(x, window_shape=[3],
+                            pooling_type="MAX", padding='SAME', strides=[3])
 
 #*********************** First Convolution Layer *************************************
 # filter / kernel tensor of shape [filter_width, in_channels, out_channels]
@@ -76,14 +77,14 @@ W_conv3 = weight_variable([60, 64, 128])
 b_conv3 = bias_variable([128])
 
 h_conv3 = tf.nn.relu(conv1d(h_pool2, W_conv3) + b_conv3)
-h_pool3 = max_pool_1x1_d5(h_conv3)
+h_pool3 = max_pool_1x1_d3(h_conv3)
 
 
 # Densely Connected Layer with 1024 neurons: (300/2/2 = 75 / 5 = 15)
-W_fc1 = weight_variable([15 * 128, 64*64])
+W_fc1 = weight_variable([25 * 128, 64*64])
 b_fc1 = bias_variable([64*64])
 
-h_pool3_flat = tf.reshape(h_pool3, [-1, 15 * 128])
+h_pool3_flat = tf.reshape(h_pool3, [-1, 25 * 128])
 h_fc1 = tf.nn.relu(tf.matmul(h_pool3_flat, W_fc1) + b_fc1)
 
 # Dropout before the readout layer to reduce overfitting
@@ -120,7 +121,7 @@ with tf.Session() as sess:
     sess.run(tf.global_variables_initializer())
 
     for i in range(20000):
-        batch = fullsets.train.next_batch(50)
+        batch = fullsets.train.next_batch(200)
         if i % 100 == 0:
             train_accuracy = accuracy.eval(feed_dict={
                 x: batch[0], y_: batch[1], keep_prob: 1.0})
@@ -143,7 +144,7 @@ with tf.Session() as sess:
     plt.ylabel('training loss')
     plt.xlabel('num of trainig epoch/iteration')
     plt.title('ConvNet Training on fullsets')
-    plt.plot(iteration_list, train_loss_list, color='r', label='train loss')
+    plt.plot(iteration_list[1:], train_loss_list[1:], color='r', label='train loss')
     plt.legend(loc='upper right')
     plt.savefig('./Problem2_figure_Training_Loss.png')
 
@@ -152,6 +153,15 @@ with tf.Session() as sess:
     plt.ylabel('test accuracy')
     plt.xlabel('num of trainig epoch/iteration')
     plt.title('ConvNet Training on fullsets')
-    plt.plot(iteration_list, test_accuracy_list, color='y', label='test accuracy')
+    plt.plot(iteration_list[1:], test_accuracy_list[1:], color='y', label='test accuracy')
     plt.legend(loc='lower right')
     plt.savefig('./Problem2_figure_Test_Acc.png')
+
+    myData = []
+    myData.append(iteration_list)
+    myData.append(train_loss_list)
+    myData.append(test_accuracy_list)
+    myFile = open('3_Layer_MAX_relu_batch200.csv','w')
+    with myFile:
+        writer = csv.writer(myFile)
+        writer.writerows(myData)
