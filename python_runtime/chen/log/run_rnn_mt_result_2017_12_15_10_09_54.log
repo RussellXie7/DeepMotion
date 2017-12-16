@@ -1,0 +1,5 @@
+2017-12-15 10:09:54,070, DEBUG, Start reading formatted input
+2017-12-15 10:09:54,920, DEBUG, End reading formatted input
+------------------------------------------------------------------------
+2017-12-15 10:09:54,921, DEBUG, Start RNN training master
+2017-12-15 10:09:56,287, DEBUG, exp id, 0, Start RNN worker
