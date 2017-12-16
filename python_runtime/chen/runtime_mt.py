@@ -22,19 +22,20 @@ SPLIT_RANDOM_STATE = 42
 TEST_SIZE = 0.25
 
 # constant for mt
-THREAD_COUNT = 2
+ENABLE_SIMPLE_RUN = True
+THREAD_COUNT = 5
 SIMPLE_LEARNING_LEN = 2
-SIMPLE_BATCH_LEN = 1
+SIMPLE_BATCH_LEN = 2
 SIMPLE_HIDDEN_LEN = 2
 
 
 # constant for rnn training
 # learning_rate = 0.001
 LEARNING_RATE_RANGE = [0.00005, 0.0001, 0.0005, 0.001, 0.005]
-training_steps = 500 # TODO: change the steps to 10000 for better result
+training_steps = 10000 # TODO: change the steps to 10000 for better result
 # batch_size = 128
 BATCH_SIZE_RANGE = [32, 64, 128, 256, 512]
-display_step = 50
+display_step = 200
 
 # constant rnn network parameters
 num_input = 3 # we only read one set of yaw pitch row
@@ -278,7 +279,7 @@ def main():
     LOGGER.debug("End reading formatted input\n" + CUTOFF_LINE)
 
     LOGGER.debug("Start RNN training master")
-    master_res = rnn_training_master(train_x, train_y, test_x, test_y, is_simple_run=True)
+    master_res = rnn_training_master(train_x, train_y, test_x, test_y, is_simple_run=ENABLE_SIMPLE_RUN)
     LOGGER.debug("End RNN training master\n" + CUTOFF_LINE)
 
     LOGGER.debug("Start Exp summary report")
