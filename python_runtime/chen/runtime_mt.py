@@ -22,9 +22,9 @@ SPLIT_RANDOM_STATE = 42
 TEST_SIZE = 0.25
 
 # constant for mt
-THREAD_COUNT = 5
+THREAD_COUNT = 2
 SIMPLE_LEARNING_LEN = 2
-SIMPLE_BATCH_LEN = 2
+SIMPLE_BATCH_LEN = 1
 SIMPLE_HIDDEN_LEN = 2
 
 
@@ -151,7 +151,7 @@ def rnn_training_engine_worker(exp_id, train_x, train_y, test_x, test_y, layer_i
             x = tf.unstack(x, timesteps, 1)
 
             # get lstm cell output
-            outputs, states = rnn.static_rnn([lstm_cell()], x, dtype=tf.float32)
+            outputs, states = rnn.static_rnn([lstm_cell()][0], x, dtype=tf.float32)
 
             # linear activation, using rnn inner loop last output
             return tf.matmul(outputs[-1], weights['out']) + biases['out']
@@ -235,16 +235,17 @@ def rnn_training_master(train_x, train_y, test_x, test_y, is_simple_run=False):
             for batch_index in range(batch_length):
                 exp_params_queue.put((layer_index, learning_index, batch_index))
 
+    tf.reset_default_graph()
+
     while not exp_params_queue.empty():
         flush_mt_counter = THREAD_COUNT
-
-        # reset graph to prevent reusing cell
-        tf.reset_default_graph()
         rnn_results_temp = []
         rnn_pool = multiprocessing.Pool(processes=THREAD_COUNT)
 
-        while flush_mt_counter > 0:
+        # while flush_mt_counter > 1 and not exp_params_queue.empty():
+        while flush_mt_counter > 0 and not exp_params_queue.empty():
             flush_mt_counter -= 1
+
             current_exp_params = exp_params_queue.get()
             sample_result = rnn_pool.apply_async(rnn_training_engine_worker, (exp_id, train_x, train_y, test_x, test_y, current_exp_params[0], current_exp_params[1], current_exp_params[2],))
             exp_id += 1
