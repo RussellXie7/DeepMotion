@@ -18,12 +18,12 @@ CUTOFF_LINE = '-----------------------------------------------------------------
 IS_ENABLE_FILE_LOGGING = True
 
 # general constant
-SPLIT_RANDOM_STATE = 42
-TEST_SIZE = 0.25
+SPLIT_RANDOM_STATE = 314
+TEST_SIZE = 0.33
 
 # constant for mt
-ENABLE_SIMPLE_RUN = True
-THREAD_COUNT = 5
+ENABLE_SIMPLE_RUN = False
+THREAD_COUNT = 10
 SIMPLE_LEARNING_LEN = 2
 SIMPLE_BATCH_LEN = 2
 SIMPLE_HIDDEN_LEN = 2
@@ -31,17 +31,17 @@ SIMPLE_HIDDEN_LEN = 2
 
 # constant for rnn training
 # learning_rate = 0.001
-LEARNING_RATE_RANGE = [0.00005, 0.0001, 0.0005, 0.001, 0.005]
-training_steps = 10000 # TODO: change the steps to 10000 for better result
+LEARNING_RATE_RANGE = [0.001, 0.005, 0.01]
+training_steps = 15000 # TODO: change the steps to 10000 for better result
 # batch_size = 128
-BATCH_SIZE_RANGE = [32, 64, 128, 256, 512]
-display_step = 200
+BATCH_SIZE_RANGE = [128, 256, 512]
+display_step = 50
 
 # constant rnn network parameters
 num_input = 3 # we only read one set of yaw pitch row
 timesteps = 100  # timesteps - we have 100 data point for each char
 # num_hidden = 128  # hidden layer num of features
-NUM_HIDDEN_RANGE = [32, 64, 128, 256, 512]
+NUM_HIDDEN_RANGE = [64, 128, 256, 512]
 num_classes = 5  # number of data class - using a/b/c/d/e
 
 # raw data file names
