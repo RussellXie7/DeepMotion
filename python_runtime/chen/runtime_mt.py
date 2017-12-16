@@ -1,4 +1,5 @@
 import multiprocessing
+import Queue
 
 import numpy as np
 import logging
@@ -17,11 +18,12 @@ CUTOFF_LINE = '-----------------------------------------------------------------
 IS_ENABLE_FILE_LOGGING = True
 
 # general constant
-SPLIT_RANDOM_STATE = 42
-TEST_SIZE = 0.25
+SPLIT_RANDOM_STATE = 314
+TEST_SIZE = 0.33
 
 # constant for mt
-THREAD_COUNT = 5
+ENABLE_SIMPLE_RUN = False
+THREAD_COUNT = 10
 SIMPLE_LEARNING_LEN = 2
 SIMPLE_BATCH_LEN = 2
 SIMPLE_HIDDEN_LEN = 2
@@ -29,17 +31,17 @@ SIMPLE_HIDDEN_LEN = 2
 
 # constant for rnn training
 # learning_rate = 0.001
-LEARNING_RATE_RANGE = [0.00005, 0.0001, 0.0005, 0.001, 0.005]
-training_steps = 500 # TODO: change the steps to 10000 for better result
+LEARNING_RATE_RANGE = [0.001, 0.005, 0.01]
+training_steps = 15000 # TODO: change the steps to 10000 for better result
 # batch_size = 128
-BATCH_SIZE_RANGE = [32, 64, 128, 256, 512]
+BATCH_SIZE_RANGE = [128, 256, 512]
 display_step = 50
 
 # constant rnn network parameters
 num_input = 3 # we only read one set of yaw pitch row
 timesteps = 100  # timesteps - we have 100 data point for each char
 # num_hidden = 128  # hidden layer num of features
-NUM_HIDDEN_RANGE = [32, 64, 128, 256, 512]
+NUM_HIDDEN_RANGE = [64, 128, 256, 512]
 num_classes = 5  # number of data class - using a/b/c/d/e
 
 # raw data file names
@@ -150,7 +152,7 @@ def rnn_training_engine_worker(exp_id, train_x, train_y, test_x, test_y, layer_i
             x = tf.unstack(x, timesteps, 1)
 
             # get lstm cell output
-            outputs, states = rnn.static_rnn([lstm_cell()], x, dtype=tf.float32)
+            outputs, states = rnn.static_rnn([lstm_cell()][0], x, dtype=tf.float32)
 
             # linear activation, using rnn inner loop last output
             return tf.matmul(outputs[-1], weights['out']) + biases['out']
@@ -215,10 +217,8 @@ def rnn_training_engine_worker(exp_id, train_x, train_y, test_x, test_y, layer_i
 
 
 def rnn_training_master(train_x, train_y, test_x, test_y, is_simple_run=False):
+    import tensorflow as tf
     rnn_results = []
-    rnn_results_temp = []
-    rnn_pool = multiprocessing.Pool(processes=THREAD_COUNT)
-
     exp_id = 0
 
     num_layer_length = len(NUM_HIDDEN_RANGE)
@@ -230,18 +230,35 @@ def rnn_training_master(train_x, train_y, test_x, test_y, is_simple_run=False):
         learning_length = SIMPLE_LEARNING_LEN
         batch_length = SIMPLE_BATCH_LEN
 
+    exp_params_queue = Queue.Queue()
     for layer_index in range(num_layer_length):
         for learning_index in range(learning_length):
             for batch_index in range(batch_length):
-                sample_result = rnn_pool.apply_async(rnn_training_engine_worker, (exp_id, train_x, train_y, test_x, test_y, layer_index, learning_index, batch_index, ))
-                exp_id += 1
-                rnn_results_temp.append(sample_result)
+                exp_params_queue.put((layer_index, learning_index, batch_index))
 
-    rnn_pool.close()
-    rnn_pool.join()
+    tf.reset_default_graph()
 
-    for sample_result in rnn_results_temp:
-        rnn_results.append(sample_result)
+    while not exp_params_queue.empty():
+        flush_mt_counter = THREAD_COUNT
+        rnn_results_temp = []
+        rnn_pool = multiprocessing.Pool(processes=THREAD_COUNT)
+
+        # while flush_mt_counter > 1 and not exp_params_queue.empty():
+        while flush_mt_counter > 0 and not exp_params_queue.empty():
+            flush_mt_counter -= 1
+
+            current_exp_params = exp_params_queue.get()
+            sample_result = rnn_pool.apply_async(rnn_training_engine_worker, (exp_id, train_x, train_y, test_x, test_y, current_exp_params[0], current_exp_params[1], current_exp_params[2],))
+            exp_id += 1
+            rnn_results_temp.append(sample_result)
+
+        rnn_pool.close()
+        rnn_pool.join()
+
+        for sample_result in rnn_results_temp:
+            rnn_results.append(sample_result)
+
+        LOGGER.debug("Flush RNN training master\n" + CUTOFF_LINE)
 
     rnn_results = transform_apply_result(rnn_results)
     return rnn_results
@@ -262,7 +279,7 @@ def main():
     LOGGER.debug("End reading formatted input\n" + CUTOFF_LINE)
 
     LOGGER.debug("Start RNN training master")
-    master_res = rnn_training_master(train_x, train_y, test_x, test_y, is_simple_run=True)
+    master_res = rnn_training_master(train_x, train_y, test_x, test_y, is_simple_run=ENABLE_SIMPLE_RUN)
     LOGGER.debug("End RNN training master\n" + CUTOFF_LINE)
 
     LOGGER.debug("Start Exp summary report")
