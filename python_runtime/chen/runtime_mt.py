@@ -23,7 +23,7 @@ TEST_SIZE = 0.33
 
 # constant for mt
 ENABLE_SIMPLE_RUN = False
-THREAD_COUNT = 10
+THREAD_COUNT = 8
 SIMPLE_LEARNING_LEN = 2
 SIMPLE_BATCH_LEN = 2
 SIMPLE_HIDDEN_LEN = 2
@@ -41,7 +41,7 @@ display_step = 50
 num_input = 3 # we only read one set of yaw pitch row
 timesteps = 100  # timesteps - we have 100 data point for each char
 # num_hidden = 128  # hidden layer num of features
-NUM_HIDDEN_RANGE = [64, 128, 256, 512]
+NUM_HIDDEN_RANGE = [64, 128, 256, 512, 1024]
 num_classes = 5  # number of data class - using a/b/c/d/e
 
 # raw data file names
