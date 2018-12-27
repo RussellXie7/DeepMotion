@@ -1,6 +1,6 @@
 # DeepMotion
 
-DeepMotion is a novel solution the handwriting-to-text task. This system can recognize handwritten letters based on pen motion. We built it with an Arduino Uno R3, a MPU9250 motion sensor, and our own 3D printed molds. Using self-collected 5,000+ temporal motion data samples, we trained an RNN model with LSTM using TensorFlow and documented this study in following report. Ultimately, we hope to integrate this study with smart phone to let user visualized the recognized handwritten character on digital device and enhance the notetaking experience.
+DeepMotion is a novel solution to the handwriting-to-text task. This system can recognize handwritten letters based on pen motion. We built it with an Arduino Uno R3, a MPU9250 motion sensor, and our own 3D printed molds. Using self-collected 5,000+ temporal motion data samples, we trained an RNN model with LSTM using TensorFlow and documented this study in following report. Ultimately, we hope to integrate this study with smart phone to let user visualized the recognized handwritten character on digital device and enhance the notetaking experience.
 
 ## Research Study Report
 
